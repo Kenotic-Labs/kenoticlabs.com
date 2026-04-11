@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kenotic Labs — Palette Preview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .switcher {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: #111; padding: 14px 24px;
+    display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  }
+  .switcher label { color: #666; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-right: 8px; }
+  .switcher button {
+    padding: 6px 16px; border: 1px solid #333; background: #1a1a1a; color: #888;
+    font-size: 12px; cursor: pointer; border-radius: 6px; transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+  }
+  .switcher button.active { background: #fff; color: #111; border-color: #fff; }
+  .switcher button:hover { border-color: #555; }
+
+  .preview { margin-top: 60px; transition: all 0.4s ease; }
+
+  .section { padding: 80px 60px; transition: all 0.4s ease; }
+  .section h1 { font-size: 3.2rem; font-weight: 700; line-height: 1.08; margin-bottom: 20px; letter-spacing: -0.02em; }
+  .section h2 { font-size: 1.6rem; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
+  .section p { font-size: 1.05rem; line-height: 1.85; max-width: 580px; margin-bottom: 16px; }
+  .section .label { font-size: 0.65rem; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 28px; }
+  .accent-line { height: 2px; width: 48px; margin-bottom: 32px; }
+
+  .card { padding: 36px; border-radius: 16px; margin: 12px 0; max-width: 480px; transition: all 0.4s ease; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 90vh; }
+  .split > div { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; }
+  .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; max-width: 360px; }
+  .metric-num { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; }
+  .metric-label { font-size: 0.75rem; letter-spacing: 1px; margin-top: 4px; }
+
+  .btn {
+    display: inline-block; padding: 12px 28px; font-size: 0.72rem;
+    font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    border: 1.5px solid; cursor: pointer; transition: all 0.4s; background: transparent;
+    border-radius: 8px;
+  }
+
+  .props-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+
+  /* ============ PALETTE E: STRIPE-INSPIRED (Indigo + Snow) ============ */
+  .palette-e { font-family: 'Inter', sans-serif; }
+  .palette-e h1, .palette-e h2 { font-family: 'Inter', sans-serif; }
+  .palette-e .bg-primary { background: #F6F9FC; }
+  .palette-e .bg-secondary { background: #EBEEF3; }
+  .palette-e .bg-accent-section { background: #F0F3F8; }
+  .palette-e .bg-dark { background: #0A2540; }
+  .palette-e .text-heading { color: #0A2540; }
+  .palette-e .text-body { color: #425466; }
+  .palette-e .text-muted { color: #8898AA; }
+  .palette-e .text-accent { color: #635BFF; }
+  .palette-e .text-light-heading { color: #FFFFFF; }
+  .palette-e .text-light-body { color: #ADBDCC; }
+  .palette-e .accent-line { background: linear-gradient(90deg, #635BFF, #80E9FF); }
+  .palette-e .card { background: #FFFFFF; box-shadow: 0 2px 30px rgba(10,37,64,0.06); border: 1px solid rgba(10,37,64,0.06); }
+  .palette-e .card-dark { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); }
+  .palette-e .metric-num { color: #635BFF; }
+  .palette-e .btn { color: #635BFF; border-color: #635BFF; border-radius: 20px; }
+  .palette-e .label { color: #635BFF; }
+
+  /* ============ PALETTE F: LINEAR-INSPIRED (Neutral + Violet) ============ */
+  .palette-f { font-family: 'Inter', sans-serif; }
+  .palette-f h1, .palette-f h2 { font-family: 'Inter', sans-serif; }
+  .palette-f .bg-primary { background: #FBFBFB; }
+  .palette-f .bg-secondary { background: #F3F3F3; }
+  .palette-f .bg-accent-section { background: #F7F7F7; }
+  .palette-f .bg-dark { background: #0F0F10; }
+  .palette-f .text-heading { color: #0F0F10; }
+  .palette-f .text-body { color: #4A4A4E; }
+  .palette-f .text-muted { color: #8B8B8F; }
+  .palette-f .text-accent { color: #5E6AD2; }
+  .palette-f .text-light-heading { color: #EEEFF1; }
+  .palette-f .text-light-body { color: #8B8B8F; }
+  .palette-f .accent-line { background: linear-gradient(90deg, #5E6AD2, transparent); }
+  .palette-f .card { background: #FFFFFF; box-shadow: 0 0 0 1px rgba(0,0,0,0.06); }
+  .palette-f .card-dark { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
+  .palette-f .metric-num { color: #5E6AD2; }
+  .palette-f .btn { color: #5E6AD2; border-color: rgba(94,106,210,0.3); }
+  .palette-f .label { color: #5E6AD2; }
+
+  /* ============ PALETTE G: CLOUD DANCER (Pantone 2026 + Sage) ============ */
+  .palette-g { font-family: 'DM Sans', sans-serif; }
+  .palette-g h1, .palette-g h2 { font-family: 'Source Serif 4', serif; }
+  .palette-g .bg-primary { background: #F8F7F4; }
+  .palette-g .bg-secondary { background: #EFEDE8; }
+  .palette-g .bg-accent-section { background: #F3F1EC; }
+  .palette-g .bg-dark { background: #1A1F1C; }
+  .palette-g .text-heading { color: #1A1F1C; }
+  .palette-g .text-body { color: #444840; }
+  .palette-g .text-muted { color: #8C8E86; }
+  .palette-g .text-accent { color: #5A7A62; }
+  .palette-g .text-light-heading { color: #F8F7F4; }
+  .palette-g .text-light-body { color: #A8ACA4; }
+  .palette-g .accent-line { background: linear-gradient(90deg, #5A7A62, transparent); }
+  .palette-g .card { background: #FEFDFB; box-shadow: 0 2px 24px rgba(26,31,28,0.04); }
+  .palette-g .card-dark { background: rgba(255,255,255,0.04); }
+  .palette-g .metric-num { color: #5A7A62; }
+  .palette-g .btn { color: #5A7A62; border-color: rgba(90,122,98,0.3); }
+  .palette-g .label { color: #5A7A62; }
+
+  /* ============ PALETTE H: MIDNIGHT TRUST (Deep Navy + Gold Accent) ============ */
+  .palette-h { font-family: 'Inter', sans-serif; }
+  .palette-h h1, .palette-h h2 { font-family: 'Source Serif 4', serif; }
+  .palette-h .bg-primary { background: #F5F5F0; }
+  .palette-h .bg-secondary { background: #EAEAE2; }
+  .palette-h .bg-accent-section { background: #F0F0E8; }
+  .palette-h .bg-dark { background: #12232E; }
+  .palette-h .text-heading { color: #12232E; }
+  .palette-h .text-body { color: #3A4A54; }
+  .palette-h .text-muted { color: #8A9298; }
+  .palette-h .text-accent { color: #B08D3E; }
+  .palette-h .text-light-heading { color: #F5F5F0; }
+  .palette-h .text-light-body { color: #8AA0B0; }
+  .palette-h .accent-line { background: linear-gradient(90deg, #B08D3E, transparent); }
+  .palette-h .card { background: #FAFAF6; box-shadow: 0 2px 30px rgba(18,35,46,0.04); border: 1px solid rgba(18,35,46,0.05); }
+  .palette-h .card-dark { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+  .palette-h .metric-num { color: #B08D3E; }
+  .palette-h .btn { color: #B08D3E; border-color: rgba(176,141,62,0.3); }
+  .palette-h .label { color: #B08D3E; }
+
+  /* ============ PALETTE I: MONOCHROME EDITORIAL ============ */
+  .palette-i { font-family: 'Inter', sans-serif; }
+  .palette-i h1, .palette-i h2 { font-family: 'Source Serif 4', serif; }
+  .palette-i .bg-primary { background: #FAFAFA; }
+  .palette-i .bg-secondary { background: #F0F0F0; }
+  .palette-i .bg-accent-section { background: #F5F5F5; }
+  .palette-i .bg-dark { background: #141414; }
+  .palette-i .text-heading { color: #141414; }
+  .palette-i .text-body { color: #484848; }
+  .palette-i .text-muted { color: #999999; }
+  .palette-i .text-accent { color: #141414; }
+  .palette-i .text-light-heading { color: #FAFAFA; }
+  .palette-i .text-light-body { color: #888888; }
+  .palette-i .accent-line { background: #141414; }
+  .palette-i .card { background: #FFFFFF; box-shadow: 0 0 0 1px rgba(0,0,0,0.05); }
+  .palette-i .card-dark { background: rgba(255,255,255,0.05); }
+  .palette-i .metric-num { color: #141414; }
+  .palette-i .btn { color: #141414; border-color: #141414; }
+  .palette-i .label { color: #777777; }
+
+  /* ============ PALETTE J: WARM UMBER (Earthy Premium) ============ */
+  .palette-j { font-family: 'DM Sans', sans-serif; }
+  .palette-j h1, .palette-j h2 { font-family: 'Playfair Display', serif; }
+  .palette-j .bg-primary { background: #F7F4F0; }
+  .palette-j .bg-secondary { background: #EDE8E1; }
+  .palette-j .bg-accent-section { background: #F2EEE8; }
+  .palette-j .bg-dark { background: #231F1B; }
+  .palette-j .text-heading { color: #231F1B; }
+  .palette-j .text-body { color: #4D453C; }
+  .palette-j .text-muted { color: #968E83; }
+  .palette-j .text-accent { color: #8B6A3E; }
+  .palette-j .text-light-heading { color: #F7F4F0; }
+  .palette-j .text-light-body { color: #B5ADA3; }
+  .palette-j .accent-line { background: linear-gradient(90deg, #8B6A3E, transparent); }
+  .palette-j .card { background: #FDFCFA; box-shadow: 0 2px 28px rgba(35,31,27,0.04); }
+  .palette-j .card-dark { background: rgba(255,255,255,0.04); }
+  .palette-j .metric-num { color: #8B6A3E; }
+  .palette-j .btn { color: #8B6A3E; border-color: rgba(139,106,62,0.3); }
+  .palette-j .label { color: #8B6A3E; }
+</style>
+</head>
+<body>
+
+<div class="switcher">
+  <label>Palette:</label>
+  <button class="active" onclick="setPalette('e')">E — Stripe (Indigo+Snow)</button>
+  <button onclick="setPalette('f')">F — Linear (Neutral+Violet)</button>
+  <button onclick="setPalette('g')">G — Cloud Dancer (Sage)</button>
+  <button onclick="setPalette('h')">H — Navy+Gold Trust</button>
+  <button onclick="setPalette('i')">I — Monochrome Editorial</button>
+  <button onclick="setPalette('j')">J — Warm Umber</button>
+</div>
+
+<div class="preview palette-e" id="preview">
+
+  <!-- HERO -->
+  <div class="split">
+    <div class="bg-dark">
+      <div class="label" style="color: inherit; opacity: 0.5;">Kenotic Labs</div>
+      <h1 class="text-light-heading">We gave machines intelligence. We never gave them time.</h1>
+      <p class="text-light-body" style="margin-top: 20px; font-style: italic;">What if intelligence was never the hard part?</p>
+    </div>
+    <div class="bg-primary" style="padding-left: 80px;">
+      <p class="text-body">The hard part is continuity. The ability to carry forward what matters, update it when reality changes, and reconstruct it when it is needed again.</p>
+      <p class="text-heading" style="font-weight: 700; margin-top: 8px;">That is the layer we build.</p>
+      <div class="accent-line" style="margin-top: 40px;"></div>
+      <p class="text-muted" style="font-size: 0.8rem; letter-spacing: 2px; font-weight: 600;">Kenotic Labs</p>
+    </div>
+  </div>
+
+  <!-- WHY IT MATTERS -->
+  <div class="section bg-primary">
+    <div class="label text-accent">Why It Matters</div>
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px;">
+      <div class="card">
+        <h2 class="text-heading" style="font-style: italic; font-size: 1.35rem; line-height: 1.4;">"The things that matter most must never be at the mercy of the things that matter least."</h2>
+        <p class="text-muted" style="margin-top: 12px; font-size: 0.85rem;">Goethe</p>
+        <p class="text-body" style="margin-top: 20px; font-size: 0.95rem;">That is the problem continuity solves. The things that matter to you are at the mercy of systems that forget the moment you leave.</p>
+      </div>
+      <div class="card">
+        <h2 class="text-heading" style="font-style: italic; font-size: 1.35rem; line-height: 1.4;">"All that you touch, You Change. All that you Change, Changes you."</h2>
+        <p class="text-muted" style="margin-top: 12px; font-size: 0.85rem;">Octavia E. Butler</p>
+        <p class="text-body" style="margin-top: 20px; font-size: 0.95rem;">Retrieval says: here are some related past things. Continuity says: here is the current living state of your situation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT WE DO -->
+  <div class="section bg-secondary">
+    <div class="label text-accent">What We Do</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+      <div>
+        <h2 class="text-heading" style="font-size: 2rem;">We build the continuity layer.</h2>
+        <p class="text-body" style="margin-top: 16px;">Continuity is the system property that lets an AI carry forward what still matters, update it when reality changes, and reconstruct useful context later.</p>
+        <p class="text-body">It governs the write path and the read path.</p>
+      </div>
+      <div class="card">
+        <p class="text-body" style="font-style: italic;">A single sentence contains more than text. It contains who you are, what you're facing, when it matters, and how you feel about it. Continuity means writing all of that — and knowing how to bring it back.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROPERTIES -->
+  <div class="section bg-accent-section">
+    <div class="label text-accent">Core Properties</div>
+    <h2 class="text-heading" style="font-size: 2rem; margin-bottom: 8px;">What makes continuity real.</h2>
+    <div class="props-grid">
+      <div class="card">
+        <div class="label text-accent" style="margin-bottom: 8px; font-size: 0.6rem;">01</div>
+        <h2 class="text-heading" style="font-size: 1.2rem;">Reconstruction</h2>
+        <p class="text-body" style="font-size: 0.92rem;">Not just finding old facts. Rebuilding the current picture.</p>
+      </div>
+      <div class="card">
+        <div class="label text-accent" style="margin-bottom: 8px; font-size: 0.6rem;">02</div>
+        <h2 class="text-heading" style="font-size: 1.2rem;">Disambiguation</h2>
+        <p class="text-body" style="font-size: 0.92rem;">250 lives in one system. Your sister's story stays separate from your boss's.</p>
+      </div>
+      <div class="card">
+        <div class="label text-accent" style="margin-bottom: 8px; font-size: 0.6rem;">03</div>
+        <h2 class="text-heading" style="font-size: 1.2rem;">Update Handling</h2>
+        <p class="text-body" style="font-size: 0.92rem;">The appointment moved. The plan changed. The system knows the difference.</p>
+      </div>
+      <div class="card">
+        <div class="label text-accent" style="margin-bottom: 8px; font-size: 0.6rem;">04</div>
+        <h2 class="text-heading" style="font-size: 1.2rem;">Temporal Ordering</h2>
+        <p class="text-body" style="font-size: 0.92rem;">Not just what happened. When, in what order, and what's still true.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EVIDENCE -->
+  <div class="section bg-primary">
+    <div class="label text-accent">Evidence</div>
+    <h2 class="text-heading" style="font-size: 2rem;">How do we prove it works?</h2>
+    <p class="text-body">We built ATANT — an open test suite of 250 real-life narratives across 6 life domains. No LLM in the evaluation loop. Deterministic. Reproducible.</p>
+    <div class="metrics">
+      <div><div class="metric-num">250</div><div class="metric-label text-muted">Stories</div></div>
+      <div><div class="metric-num">1,835</div><div class="metric-label text-muted">Questions</div></div>
+      <div><div class="metric-num">10</div><div class="metric-label text-muted">Checkpoints</div></div>
+      <div><div class="metric-num">96%</div><div class="metric-label text-muted">Cumulative</div></div>
+    </div>
+    <button class="btn" style="margin-top: 24px;">View the Standard</button>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="split">
+    <div class="bg-dark">
+      <h2 class="text-light-heading" style="font-size: 2rem;">Let's talk.</h2>
+      <p class="text-light-body" style="margin-top: 12px;">Partnership inquiries, investment, research collaboration.</p>
+      <p class="text-light-body" style="margin-top: 24px; opacity: 0.5;">sam@kenoticlabs.com</p>
+    </div>
+    <div class="bg-primary" style="padding-left: 80px;">
+      <h2 class="text-heading" style="font-size: 2rem;">Join the waitlist.</h2>
+      <p class="text-body" style="margin-top: 12px;">Be first to access the SDK, test your systems against ATANT, or try Raya when it launches.</p>
+      <button class="btn" style="margin-top: 24px;">Join</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="section bg-dark" style="text-align: center; padding: 40px 60px;">
+    <p class="text-light-body" style="font-style: italic; opacity: 0.4; font-size: 0.95rem;">What knows you well, should wish you well.</p>
+    <p class="text-light-body" style="margin-top: 12px; font-size: 0.75rem; opacity: 0.2;">© 2026 Kenotic Labs</p>
+  </div>
+
+</div>
+
+<script>
+function setPalette(p) {
+  const el = document.getElementById('preview');
+  el.className = 'preview palette-' + p;
+  document.querySelectorAll('.switcher button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>

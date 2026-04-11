@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenotic Labs — Soft + Strict</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lato:wght@300;400;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lato', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  .option { display: none; }
+  .option.active { display: block; }
+
+  .switcher {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+    background: rgba(255,255,255,0.85); backdrop-filter: blur(24px) saturate(1.8);
+    padding: 12px 32px; display: flex; gap: 8px; align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .switcher span { color: #86868b; font: 600 10px/1 'Lato'; letter-spacing: 2px; text-transform: uppercase; margin-right: 12px; }
+  .switcher button {
+    padding: 6px 18px; border: 1px solid #d2d2d7; background: transparent; color: #86868b;
+    font: 600 11px/1 'Lato'; cursor: pointer; border-radius: 980px; transition: all 0.3s;
+  }
+  .switcher button.active { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
+
+  /* ===== SHARED APPLE-LIKE LAYOUT ===== */
+
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 140px 40px 100px;
+  }
+  .hero .eyebrow {
+    font: 400 0.95rem/1 'Lato'; letter-spacing: 0.5px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font: 700 clamp(3.2rem,6vw,5.2rem)/1.03 'Playfair Display';
+    max-width: 780px; letter-spacing: -0.02em;
+  }
+  .hero .tagline {
+    font: 300 clamp(1.1rem,2vw,1.35rem)/1.65 'Lato';
+    max-width: 480px; margin-top: 24px;
+  }
+  .hero .cta-row { margin-top: 48px; display: flex; gap: 16px; }
+  .hero .btn-primary {
+    padding: 16px 36px; border-radius: 980px; font: 700 0.8rem/1 'Lato';
+    letter-spacing: 0.5px; border: none; cursor: pointer; transition: all 0.3s;
+  }
+  .hero .btn-ghost {
+    padding: 16px 36px; border-radius: 980px; font: 700 0.8rem/1 'Lato';
+    letter-spacing: 0.5px; background: transparent; cursor: pointer; transition: all 0.3s;
+  }
+
+  .section {
+    padding: 120px 40px; max-width: 980px; margin: 0 auto;
+  }
+  .section-wide {
+    padding: 120px 40px; max-width: 1200px; margin: 0 auto;
+  }
+  .section .overline {
+    font: 700 0.7rem/1 'Lato'; letter-spacing: 4px;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .section h2 {
+    font: 700 clamp(2rem,4vw,3.2rem)/1.08 'Playfair Display';
+    max-width: 600px; letter-spacing: -0.01em;
+  }
+  .section .desc {
+    font: 300 1.05rem/1.9 'Lato'; max-width: 500px; margin-top: 20px;
+  }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 56px; }
+  .card {
+    padding: 44px 36px; border-radius: 20px; transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s;
+  }
+  .card:hover { transform: translateY(-4px); }
+  .card .card-num { font: 700 0.6rem/1 'Lato'; letter-spacing: 3px; margin-bottom: 16px; }
+  .card h3 { font: 700 1.15rem/1.3 'Playfair Display'; margin-bottom: 10px; }
+  .card p { font: 400 0.9rem/1.75 'Lato'; }
+
+  .stats { display: flex; gap: 64px; margin-top: 64px; }
+  .stat .num { font: 700 3.2rem/1 'Playfair Display'; letter-spacing: -0.02em; }
+  .stat .label { font: 400 0.72rem/1 'Lato'; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; }
+
+  .divider-line { height: 1px; max-width: 980px; margin: 0 auto; }
+
+  .footer-section {
+    padding: 80px 40px 60px; text-align: center;
+  }
+  .footer-section .quote { font: italic 400 1.15rem/1.5 'Playfair Display'; }
+  .footer-section .copy { font: 300 0.72rem/1 'Lato'; letter-spacing: 1px; margin-top: 20px; }
+
+  /* ========================================
+     A: PURE — Almost no color. Black + white + one warm gray.
+     The Apple approach. Confidence through absence.
+     ======================================== */
+  .pure { background: #fbfbfb; color: #1d1d1f; }
+  .pure .hero { background: #fbfbfb; }
+  .pure .hero .eyebrow { color: #86868b; }
+  .pure .hero h1 { color: #1d1d1f; }
+  .pure .hero .tagline { color: #6e6e73; }
+  .pure .hero .btn-primary { background: #1d1d1f; color: #fff; }
+  .pure .hero .btn-primary:hover { background: #333336; }
+  .pure .hero .btn-ghost { border: 1.5px solid #d2d2d7; color: #1d1d1f; }
+  .pure .section .overline { color: #86868b; }
+  .pure .section h2 { color: #1d1d1f; }
+  .pure .section .desc { color: #6e6e73; }
+  .pure .card { background: #f5f5f7; }
+  .pure .card:hover { box-shadow: 0 12px 48px rgba(0,0,0,0.06); }
+  .pure .card .card-num { color: #86868b; }
+  .pure .card h3 { color: #1d1d1f; }
+  .pure .card p { color: #6e6e73; }
+  .pure .stat .num { color: #1d1d1f; }
+  .pure .stat .label { color: #86868b; }
+  .pure .divider-line { background: #d2d2d7; }
+  .pure .footer-section { background: #fbfbfb; }
+  .pure .footer-section .quote { color: #86868b; }
+  .pure .footer-section .copy { color: #d2d2d7; }
+
+  /* ========================================
+     B: SOFT GREEN — Same restraint, but headings are deep green.
+     One color, used sparingly. Everything else is neutral.
+     ======================================== */
+  .softgreen { background: #fafbf9; color: #1d1d1f; }
+  .softgreen .hero { background: #fafbf9; }
+  .softgreen .hero .eyebrow { color: #86868b; }
+  .softgreen .hero h1 { color: #1B4332; }
+  .softgreen .hero .tagline { color: #6e6e73; }
+  .softgreen .hero .btn-primary { background: #1B4332; color: #fafbf9; }
+  .softgreen .hero .btn-primary:hover { background: #2D6A4F; }
+  .softgreen .hero .btn-ghost { border: 1.5px solid #d2d2d7; color: #1d1d1f; }
+  .softgreen .section .overline { color: #86868b; }
+  .softgreen .section h2 { color: #1B4332; }
+  .softgreen .section .desc { color: #6e6e73; }
+  .softgreen .card { background: #f2f5f2; }
+  .softgreen .card:hover { box-shadow: 0 12px 48px rgba(27,67,50,0.06); }
+  .softgreen .card .card-num { color: #86868b; }
+  .softgreen .card h3 { color: #1B4332; }
+  .softgreen .card p { color: #6e6e73; }
+  .softgreen .stat .num { color: #1B4332; }
+  .softgreen .stat .label { color: #86868b; }
+  .softgreen .divider-line { background: #e0e2de; }
+  .softgreen .footer-section { background: #1B4332; }
+  .softgreen .footer-section .quote { color: #8BAF9A; }
+  .softgreen .footer-section .copy { color: #40916C; opacity: 0.4; }
+
+  /* ========================================
+     C: GOLD THREAD — Neutral everything. Gold only appears
+     in the finest details: overlines, card numbers, divider.
+     Like gold thread in a white shirt.
+     ======================================== */
+  .goldthread { background: #fafaf8; color: #1d1d1f; }
+  .goldthread .hero { background: #fafaf8; }
+  .goldthread .hero .eyebrow { color: #B39B5C; }
+  .goldthread .hero h1 { color: #1d1d1f; }
+  .goldthread .hero .tagline { color: #6e6e73; }
+  .goldthread .hero .btn-primary { background: #1d1d1f; color: #fafaf8; }
+  .goldthread .hero .btn-primary:hover { background: #333; }
+  .goldthread .hero .btn-ghost { border: 1.5px solid #d2d2d7; color: #1d1d1f; }
+  .goldthread .section .overline { color: #B39B5C; }
+  .goldthread .section h2 { color: #1d1d1f; }
+  .goldthread .section .desc { color: #6e6e73; }
+  .goldthread .card { background: #f5f5f2; }
+  .goldthread .card:hover { box-shadow: 0 12px 48px rgba(0,0,0,0.05); }
+  .goldthread .card .card-num { color: #B39B5C; }
+  .goldthread .card h3 { color: #1d1d1f; }
+  .goldthread .card p { color: #6e6e73; }
+  .goldthread .stat .num { color: #1d1d1f; }
+  .goldthread .stat .label { color: #B39B5C; }
+  .goldthread .divider-line { background: linear-gradient(90deg, transparent, #B39B5C, transparent); opacity: 0.3; }
+  .goldthread .footer-section { background: #1d1d1f; }
+  .goldthread .footer-section .quote { color: #B39B5C; opacity: 0.5; }
+  .goldthread .footer-section .copy { color: #555; }
+
+  /* ========================================
+     D: GREEN + GOLD WHISPER — Green headings. Gold accents.
+     Still Apple-level restraint. The colors barely raise their voice.
+     ======================================== */
+  .whisper { background: #fafbf8; color: #1d1d1f; }
+  .whisper .hero { background: #fafbf8; }
+  .whisper .hero .eyebrow { color: #B39B5C; }
+  .whisper .hero h1 { color: #1B4332; }
+  .whisper .hero .tagline { color: #6e6e73; }
+  .whisper .hero .btn-primary { background: #1B4332; color: #fafbf8; }
+  .whisper .hero .btn-primary:hover { background: #2D6A4F; }
+  .whisper .hero .btn-ghost { border: 1.5px solid #d2d2d7; color: #1d1d1f; }
+  .whisper .section .overline { color: #B39B5C; }
+  .whisper .section h2 { color: #1B4332; }
+  .whisper .section .desc { color: #6e6e73; }
+  .whisper .card { background: #f3f5f1; }
+  .whisper .card:hover { box-shadow: 0 12px 48px rgba(27,67,50,0.06); }
+  .whisper .card .card-num { color: #B39B5C; }
+  .whisper .card h3 { color: #1B4332; }
+  .whisper .card p { color: #6e6e73; }
+  .whisper .stat .num { color: #1B4332; }
+  .whisper .stat .label { color: #B39B5C; }
+  .whisper .divider-line { background: linear-gradient(90deg, transparent, #B39B5C, transparent); opacity: 0.25; }
+  .whisper .footer-section { background: #1B4332; }
+  .whisper .footer-section .quote { color: #B39B5C; opacity: 0.5; }
+  .whisper .footer-section .copy { color: #52B788; opacity: 0.3; }
+</style>
+</head>
+<body>
+
+<div class="switcher">
+  <span>Style</span>
+  <button class="active" onclick="show('pure')">Pure (No Color)</button>
+  <button onclick="show('softgreen')">Soft Green</button>
+  <button onclick="show('goldthread')">Gold Thread</button>
+  <button onclick="show('whisper')">Green + Gold Whisper</button>
+</div>
+
+<script>
+const styles = ['pure', 'softgreen', 'goldthread', 'whisper'];
+
+function makeSection(cls) {
+  return `<div class="option ${cls} ${cls==='pure'?'active':''}" id="${cls}">
+
+    <div class="hero">
+      <p class="eyebrow">Kenotic Labs</p>
+      <h1>We gave machines intelligence. We never gave them time.</h1>
+      <p class="tagline">The hard part is continuity. The ability to carry forward what matters, update it when reality changes, and reconstruct it when it is needed again.</p>
+      <div class="cta-row">
+        <button class="btn-primary">View the Standard</button>
+        <button class="btn-ghost">Read the Paper</button>
+      </div>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <div class="section">
+      <p class="overline">What We Build</p>
+      <h2>The continuity layer.</h2>
+      <p class="desc">Continuity is the system property that lets an AI carry forward what still matters, update it when reality changes, and reconstruct useful context later.</p>
+    </div>
+
+    <div class="section-wide">
+      <div class="cards">
+        <div class="card">
+          <div class="card-num">01</div>
+          <h3>Reconstruction</h3>
+          <p>Not finding old facts. Rebuilding the current picture from structured traces.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">02</div>
+          <h3>Disambiguation</h3>
+          <p>250 lives in one system. Each story stays separate from every other.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">03</div>
+          <h3>Update Handling</h3>
+          <p>The appointment moved. The plan changed. Old state gets superseded.</p>
+        </div>
+        <div class="card">
+          <div class="card-num">04</div>
+          <h3>Temporal Ordering</h3>
+          <p>Not just what happened. When, in what order, and what's still true.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <div class="section">
+      <p class="overline">Evidence</p>
+      <h2>Tested against 250 narratives.</h2>
+      <p class="desc">ATANT is the first open evaluation framework for AI continuity. No LLM in the evaluation loop. Deterministic. Reproducible.</p>
+      <div class="stats">
+        <div class="stat"><div class="num">250</div><div class="label">Stories</div></div>
+        <div class="stat"><div class="num">1,835</div><div class="label">Questions</div></div>
+        <div class="stat"><div class="num">96%</div><div class="label">Cumulative</div></div>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <p class="quote">What knows you well, should wish you well.</p>
+      <p class="copy">© 2026 Kenotic Labs</p>
+    </div>
+
+  </div>`;
+}
+
+const wrapper = document.createElement('div');
+styles.forEach(s => wrapper.innerHTML += makeSection(s));
+document.body.appendChild(wrapper);
+
+function show(id) {
+  document.querySelectorAll('.option').forEach(el => { el.style.display='none'; el.classList.remove('active'); });
+  document.getElementById(id).style.display='block';
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.switcher button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+
+</body>
+</html>
