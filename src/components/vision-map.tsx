@@ -45,7 +45,7 @@ export function VisionMap() {
           href={`#${stop.id}`}
           className="flex items-center gap-2 group"
         >
-          {/* Label — only visible for active or on hover */}
+          {/* Label: only visible for active or on hover */}
           <span
             className={`text-[0.55rem] font-bold tracking-[1px] uppercase transition-all duration-500 ${
               i === active

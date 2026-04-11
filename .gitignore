@@ -46,3 +46,5 @@ next-env.d.ts
 /page_dump.html
 *.backup-*
 /public/palette-*.html
+
+.vercel

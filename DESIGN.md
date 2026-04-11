@@ -1,4 +1,4 @@
-# Kenotic Labs — Website Design Document
+# Kenotic Labs, Website Design Document
 **Version:** 1.0
 **Date:** 2026-04-02
 **Stack:** Next.js 15, TypeScript, Tailwind CSS, shadcn/ui, Framer Motion
@@ -7,7 +7,7 @@
 
 ## Design System
 
-### Brand Colors — "Sterling Sage" Palette
+### Brand Colors, "Sterling Sage" Palette
 ```css
 /* BACKGROUNDS */
 --silver-cream:    #F2F0EB    /* primary light background */
@@ -78,14 +78,14 @@
 | Section | Layout Pattern | Background |
 |---------|---------------|------------|
 | Hero | Full-viewport, asymmetric split (55/45), layered depth | Dark / Cream |
-| Why It Matters | Bento grid — large card (1.4fr) + stacked smaller cards | Cream |
+| Why It Matters | Bento grid, large card (1.4fr) + stacked smaller cards | Cream |
 | What We Do | Asymmetric split with offset floating card | Cream gradient |
-| Properties | Bento grid — 2-col with varying spans (wide/narrow) | Cream deep |
+| Properties | Bento grid, 2-col with varying spans (wide/narrow) | Cream deep |
 | Vision | Edge-to-edge 50/50 split | Forest / Cream |
 | Values | Full dark, staggered 2-col cards with offset | Deep dark |
 | Evidence | Asymmetric split, cards with rounded corners | Cream + gold accent |
 | Publications | Centered, 2-col cards + community links row | Cream |
-| Contact | Split — dark form left, cream waitlist right | Forest / Cream |
+| Contact | Split, dark form left, cream waitlist right | Forest / Cream |
 | Footer | Centered, minimal | Deep dark |
 
 ### Card Design
@@ -99,7 +99,7 @@
 ### Section Transitions
 - Gradient fades between sections (bg-gradient-to-b)
 - Gold accent lines as dividers (h-[3px] with gradient opacity)
-- NO flat color block edges — always gradients or overlapping elements
+- NO flat color block edges, always gradients or overlapping elements
 
 ---
 
@@ -178,23 +178,23 @@
 ```
 src/
   app/
-    layout.tsx          — Root layout, fonts, metadata
-    page.tsx            — Main page, imports all sections
-    globals.css         — Tailwind + shadcn + custom vars
+    layout.tsx         , Root layout, fonts, metadata
+    page.tsx           , Main page, imports all sections
+    globals.css        , Tailwind + shadcn + custom vars
   components/
-    nav.tsx             — Fixed nav with mix-blend-mode
-    reveal.tsx          — Reusable scroll-reveal wrapper
+    nav.tsx            , Fixed nav with mix-blend-mode
+    reveal.tsx         , Reusable scroll-reveal wrapper
     sections/
-      hero.tsx          — Full viewport, split, word animation
-      why-it-matters.tsx — Bento: large card + stacked cards
-      what-we-do.tsx    — Asymmetric split, floating card
-      properties.tsx    — Bento grid, varying spans
-      vision.tsx        — Edge-to-edge split
-      values.tsx        — Dark bg, staggered offset cards
-      evidence.tsx      — Split, metric cards, table
-      publications.tsx  — Cards + community row
-      contact.tsx       — Split: form + waitlist
-      footer.tsx        — Centered, minimal
+      hero.tsx         , Full viewport, split, word animation
+      why-it-matters.tsx, Bento: large card + stacked cards
+      what-we-do.tsx   , Asymmetric split, floating card
+      properties.tsx   , Bento grid, varying spans
+      vision.tsx       , Edge-to-edge split
+      values.tsx       , Dark bg, staggered offset cards
+      evidence.tsx     , Split, metric cards, table
+      publications.tsx , Cards + community row
+      contact.tsx      , Split: form + waitlist
+      footer.tsx       , Centered, minimal
 ```
 
 ---
@@ -208,7 +208,7 @@ Do NOT make up any text. Do NOT change any approved copy.
 ## Tone Principles
 - Old money meets modern tech
 - Infrastructure, not assistant
-- Humble but strong — let the work speak
+- Humble but strong, let the work speak
 - NEVER use: assistant, companion, chatbot, helper, adaptive, revolutionary, next-gen
 - Every word effortlessly readable
 - An investor reads this without squinting

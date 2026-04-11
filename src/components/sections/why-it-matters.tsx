@@ -8,9 +8,9 @@ export function WhyItMatters() {
     <section id="why" className="relative py-32 lg:py-40" style={{ backgroundColor: "#F5F3EE" }}>
       <SectionOverlay variant="left" />
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 xl:px-24">
-        {/* Two cards side by side — Goethe slightly larger */}
+        {/* Two cards side by side. Goethe slightly larger */}
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-10">
-          {/* LEFT — Goethe card (larger) */}
+          {/* LEFT: Goethe card (larger) */}
           <Reveal>
             <div
               className="relative rounded-2xl p-10 md:p-14 h-full shadow-lg"
@@ -40,7 +40,7 @@ export function WhyItMatters() {
             </div>
           </Reveal>
 
-          {/* RIGHT — Butler card + Retrieval vs Continuity stacked */}
+          {/* RIGHT: Butler card + Retrieval vs Continuity stacked */}
           <div className="flex flex-col gap-8 lg:gap-10">
             {/* Butler quote card */}
             <Reveal delay={0.15}>

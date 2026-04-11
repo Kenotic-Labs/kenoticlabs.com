@@ -47,7 +47,7 @@ export function Vision() {
             </Reveal>
           </div>
 
-          {/* Vertical green separator — desktop only */}
+          {/* Vertical green separator, desktop only */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#2D6A4F]/40 to-transparent" />
 
           {/* RIGHT */}

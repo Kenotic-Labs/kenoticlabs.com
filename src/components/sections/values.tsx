@@ -37,7 +37,7 @@ export function Values() {
           </h2>
         </Reveal>
 
-        {/* Staggered 2-col grid — right column offset down */}
+        {/* Staggered 2-col grid. Right column offset down */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {values.map((val, i) => (
             <Reveal key={i} delay={i * 0.12}>
