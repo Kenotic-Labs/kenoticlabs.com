@@ -328,8 +328,11 @@ https://kenoticlabs.com
 - Thesis essay: https://kenoticlabs.com/insights/why-continuity-becomes-the-layer (long-form argument for why the durable value in AI infrastructure is moving from the model weights to the layer underneath; covers the four-layer arc, the situation store as a new storage primitive, and why the timing is not optional)
 - Insights: https://kenoticlabs.com/insights
 - Demo: https://kenoticlabs.com/demo
-- ATANT: https://github.com/Kenotic-Labs/ATANT
-- Paper: https://arxiv.org/abs/2604.06710
+- ATANT standard repository: https://github.com/Kenotic-Labs/ATANT
+- ATANT v1.0 narrative test corpus on Hugging Face: https://huggingface.co/datasets/Kenotic-Labs/ATANTV1.0-corpus
+- Paper on arXiv: https://arxiv.org/abs/2604.06710
+- Paper page on Hugging Face: https://huggingface.co/papers/2604.06710
+- Hugging Face organization: https://huggingface.co/Kenotic-Labs
 
 ## Citation
 

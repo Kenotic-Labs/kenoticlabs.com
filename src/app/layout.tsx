@@ -365,7 +365,7 @@ export default function RootLayout({
                 "Kenotic Continuity Layer",
               ],
               url: "https://kenoticlabs.com",
-              logo: "https://kenoticlabs.com/logo.svg",
+              logo: "https://kenoticlabs.com/Main-Logo-BGR.png",
               description:
                 "Kenotic Labs builds the continuity layer for AI systems. The company's thesis is that AI fails not because it lacks information, but because it cannot preserve the living state of a situation across time. Kenotic is building a continuity primitive and situation-aware infrastructure layer based on DTCM, reconstruction, and persistent structured understanding.",
               founder: {
@@ -395,6 +395,8 @@ export default function RootLayout({
                 sameAs: [
                   "https://github.com/Kenotic-Labs",
                   "https://arxiv.org/abs/2604.06710",
+                  "https://huggingface.co/SamuelTanguturi",
+                  "https://huggingface.co/papers/2604.06710",
                 ],
               },
               foundingDate: "2025",
@@ -402,6 +404,9 @@ export default function RootLayout({
                 "https://github.com/Kenotic-Labs",
                 "https://github.com/Kenotic-Labs/ATANT",
                 "https://arxiv.org/abs/2604.06710",
+                "https://huggingface.co/Kenotic-Labs",
+                "https://huggingface.co/datasets/Kenotic-Labs/ATANTV1.0-corpus",
+                "https://huggingface.co/papers/2604.06710",
                 "https://linkedin.com/company/kenotic-labs",
                 "https://reddit.com/r/Kenoticlabs",
               ],

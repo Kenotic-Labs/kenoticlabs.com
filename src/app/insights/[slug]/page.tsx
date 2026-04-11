@@ -159,7 +159,7 @@ export default async function ArticlePage({ params }: Props) {
               url: "https://kenoticlabs.com",
               logo: {
                 "@type": "ImageObject",
-                url: "https://kenoticlabs.com/logo.svg",
+                url: "https://kenoticlabs.com/Main-Logo-BGR.png",
               },
             },
             image: [`https://kenoticlabs.com/insights/${article.slug}/opengraph-image`],

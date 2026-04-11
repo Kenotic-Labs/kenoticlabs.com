@@ -128,6 +128,14 @@ export function Publications() {
             >
               GitHub &rarr;
             </a>
+            <a
+              href="https://huggingface.co/Kenotic-Labs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B6B6B] text-sm font-semibold hover:text-[#2D6A4F] transition-colors duration-[1s] ease-[cubic-bezier(0.22,1,0.36,1)]"
+            >
+              Hugging Face &rarr;
+            </a>
           </div>
         </Reveal>
       </div>
