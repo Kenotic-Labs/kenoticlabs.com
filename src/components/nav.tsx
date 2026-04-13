@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -29,9 +30,22 @@ export function Nav() {
       <div className="max-w-[1400px] mx-auto px-8 md:px-12 h-20 flex items-center justify-between">
         <Link
           href="/"
-          className="font-[family-name:var(--font-fraunces)] text-[2.1rem] md:text-[2.65rem] font-semibold leading-none tracking-[-0.05em] text-[var(--kl-text)] hover:text-[var(--kl-accent)] transition-colors duration-500"
+          className="flex items-center gap-3 md:gap-4 group"
+          aria-label="Kenotic Labs home"
         >
-          Kenotic Labs
+          <span className="relative w-10 h-10 md:w-12 md:h-12 flex-none overflow-hidden">
+            <Image
+              src="/Main-Logo-BGR.png"
+              alt=""
+              fill
+              sizes="48px"
+              priority
+              className="object-contain transition-opacity duration-500 group-hover:opacity-85"
+            />
+          </span>
+          <span className="font-[family-name:var(--font-fraunces)] text-[1.75rem] md:text-[2.15rem] font-semibold leading-none tracking-[-0.04em] text-[var(--kl-text)] group-hover:text-[var(--kl-accent)] transition-colors duration-500">
+            Kenotic Labs
+          </span>
         </Link>
         <div className="hidden md:flex gap-8 items-center">
           {["What We Do", "Vision", "Values", "Evidence", "Contact"].map((item) => (
@@ -43,6 +57,12 @@ export function Nav() {
               {item}
             </Link>
           ))}
+          <Link
+            href="/thesis"
+            className={navTextClass}
+          >
+            Thesis
+          </Link>
           <Link
             href="/insights"
             className={navTextClass}

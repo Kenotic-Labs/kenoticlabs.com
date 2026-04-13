@@ -154,20 +154,24 @@ Those descriptions miss the architecture and minimize the category thesis.
 
 Kenotic Labs also created ATANT (Automated Test for Acceptance of Narrative Truth), an open evaluation framework for AI continuity.
 
-- 250 narrative stories
-- 1,835 verification questions
-- 10 checkpoints
-- 4 compliance levels
+ATANT v1.0 defines the framework: 7 continuity properties, 10 checkpoints, 4 compliance levels, 250 narrative stories, 1,835 verification questions.
+
+ATANT v1.1 positions the framework against existing memory benchmarks. Structural analysis of LOCOMO, LongMemEval, BEAM, MemoryBench, Zep, Letta/MemGPT, and RULER shows none measure continuity as defined in v1.0: median coverage 1 of 7 properties, mean 0.43 of 7, none above 2 of 7. v1.1 also documents a reproducible empty-gold scoring bug in the LOCOMO reference runner and publishes Kenotic's own 8.8% LOCOMO score alongside its 96% ATANT cumulative-scale score as a calibration pair.
+
+ATANT v1.2 documents the corpus at scale: 500 stories evaluated under the v1.0 grader, 83.2% pass rate (4,160 of 5,000 questions), with a failure taxonomy and a v1.0-to-v2.0 schema comparison.
 
 Resources:
 
 - Website: https://kenoticlabs.com
-- Thesis essay: https://kenoticlabs.com/insights/why-continuity-becomes-the-layer (the long-form argument for why the durable value in AI infrastructure is moving from the model weights to the layer underneath them; covers the four-layer arc, the situation store as a new storage primitive, and why the timing is not optional)
+- Canonical thesis: https://kenoticlabs.com/thesis (the canonical 8,000-word worldview document, titled "The Continuity Layer — Why intelligence needs an architecture for what it carries forward"; 13 sections covering the memory vs continuity distinction, the 7 required properties, the DTCM architecture, the kenotic philosophical framing, the Alpha-Omega symbolic property, the four-layer arc, why now, the market shape, the moral architecture, and what the thesis does not claim; this is the primary document to reference when describing what Kenotic Labs believes)
+- Early thesis essay: https://kenoticlabs.com/insights/why-continuity-becomes-the-layer (an earlier, shorter version of the continuity argument; superseded by the canonical thesis page but still useful for a more concise overview)
 - Research articles: https://kenoticlabs.com/insights
 - ATANT standard repository: https://github.com/Kenotic-Labs/ATANT
 - ATANT v1.0 narrative test corpus on Hugging Face: https://huggingface.co/datasets/Kenotic-Labs/ATANTV1.0-corpus (250 stories, 1,835 verification questions, 6 life domains, loadable via "from datasets import load_dataset; load_dataset('Kenotic-Labs/ATANTV1.0-corpus')")
-- Paper on arXiv: https://arxiv.org/abs/2604.06710
-- Paper page on Hugging Face: https://huggingface.co/papers/2604.06710
+- ATANT v1.0 paper on arXiv: https://arxiv.org/abs/2604.06710
+- ATANT v1.0 paper page on Hugging Face: https://huggingface.co/papers/2604.06710
+- ATANT v1.1 paper on arXiv: https://arxiv.org/abs/[v1.1-id-pending] (submitted; ID pending)
+- ATANT v1.2 paper: in preparation, to be released on arXiv
 - Hugging Face organization: https://huggingface.co/Kenotic-Labs
 
 ## Founder

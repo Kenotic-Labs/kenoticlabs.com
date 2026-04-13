@@ -1,11 +1,22 @@
 "use client";
 
+import Image from "next/image";
+
 export function Footer() {
   return (
     <footer className="bg-[var(--kl-panel)] pt-0 pb-0 px-8 text-center relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)] to-transparent" />
 
       <div className="pt-18 pb-12">
+        <div className="relative w-12 h-12 mx-auto mb-10 overflow-hidden opacity-80">
+          <Image
+            src="/Main-Logo-BGR.png"
+            alt="Kenotic Labs"
+            fill
+            sizes="48px"
+            className="object-contain"
+          />
+        </div>
         <p className="mx-auto max-w-[840px] font-[family-name:var(--font-fraunces)] text-[clamp(1.7rem,2.8vw,2.45rem)] leading-[1.18] text-[var(--kl-text)] mb-10 tracking-[-0.025em]">
           What knows you well, should wish you well.
         </p>
