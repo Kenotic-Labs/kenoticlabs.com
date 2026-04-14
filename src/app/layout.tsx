@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     template: "%s | Kenotic Labs",
   },
   description:
-    "AI forgets everything between sessions. ChatGPT loses context. Chatbots make you repeat yourself. AI agents fail because they cannot preserve the living state of a situation. Kenotic Labs builds the continuity layer for AI: a situation-aware infrastructure primitive based on DTCM and situational reconstruction. The missing layer between session intelligence and situational intelligence.",
+    "Kenotic Labs builds the continuity layer for AI: a situation-aware infrastructure primitive based on DTCM that preserves state across sessions.",
   keywords: [
     // Core identity
     "Kenotic Labs",
