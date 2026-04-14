@@ -144,6 +144,7 @@ export default async function ArticlePage({ params }: Props) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
+            "@id": `https://kenoticlabs.com/insights/${article.slug}#article`,
             headline: article.title,
             description: article.description,
             datePublished: article.date,
@@ -151,15 +152,18 @@ export default async function ArticlePage({ params }: Props) {
             inLanguage: "en",
             author: {
               "@type": "Person",
+              "@id": "https://kenoticlabs.com#founder",
               name: "Samuel Sameer Tanguturi",
               url: "https://kenoticlabs.com",
               sameAs: [
                 "https://arxiv.org/abs/2604.06710",
+                "https://arxiv.org/abs/2604.10981",
                 "https://github.com/Kenotic-Labs",
               ],
             },
             publisher: {
               "@type": "Organization",
+              "@id": "https://kenoticlabs.com#org",
               name: "Kenotic Labs",
               url: "https://kenoticlabs.com",
               logo: {
@@ -167,6 +171,7 @@ export default async function ArticlePage({ params }: Props) {
                 url: "https://kenoticlabs.com/Main-Logo-BGR.png",
               },
             },
+            isPartOf: { "@id": "https://kenoticlabs.com/insights#blog" },
             image: [{ "@type": "ImageObject", url: "https://kenoticlabs.com/opengraph-image", width: 1200, height: 630 }],
             keywords: article.keywords.join(", "),
             articleSection: article.category,

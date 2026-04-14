@@ -49,6 +49,7 @@ export default function ThesisPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
+    "@id": "https://kenoticlabs.com/thesis#article",
     headline: "The Continuity Layer",
     alternativeHeadline:
       "Why intelligence needs an architecture for what it carries forward",
@@ -56,18 +57,22 @@ export default function ThesisPage() {
       "The canonical Kenotic Labs thesis on the continuity layer for AI: a new storage primitive that preserves and reconstructs the living state of a situation across time, below the intelligence layer.",
     author: {
       "@type": "Person",
+      "@id": "https://kenoticlabs.com#founder",
       name: "Samuel Sameer Tanguturi",
       affiliation: { "@type": "Organization", name: "Kenotic Labs" },
     },
     publisher: {
       "@type": "Organization",
+      "@id": "https://kenoticlabs.com#org",
       name: "Kenotic Labs",
       url: "https://kenoticlabs.com",
     },
+    isPartOf: { "@id": "https://kenoticlabs.com#website" },
     datePublished: "2026-04-11",
     dateModified: "2026-04-12",
     url: "https://kenoticlabs.com/thesis",
     mainEntityOfPage: "https://kenoticlabs.com/thesis",
+    image: { "@type": "ImageObject", url: "https://kenoticlabs.com/opengraph-image", width: 1200, height: 630 },
     about: [
       { "@type": "Thing", name: "AI continuity" },
       { "@type": "Thing", name: "AI infrastructure" },
@@ -175,6 +180,7 @@ export default function ThesisPage() {
             <p>
               The current AI stack is structurally session-based at every layer. A session begins with an empty context window. Tokens flow in. The model processes them and produces tokens out. When the session ends, the context window is freed. Whatever the model came to understand inside that window goes with it.
             </p>
+            <SubHeader>What doesn&rsquo;t fix it</SubHeader>
             <p>
               Several pieces of infrastructure get described as fixing this. None of them do.
             </p>
@@ -193,6 +199,7 @@ export default function ThesisPage() {
             <p>
               Knowledge graphs store relationships. They cannot decay stale connections, distinguish between historical and current state, or reconstruct the texture of a situation that has changed over time.
             </p>
+            <SubHeader>Persistence is not continuity</SubHeader>
             <p>
               These are all components of persistence. None of them are continuity. The difference matters because the current stack has been built as if persistence were the same problem as continuity, and the result is that no layer in the stack is responsible for the property the user actually wants: that the system come back tomorrow and pick up where it left off, knowing what changed.
             </p>
@@ -213,6 +220,7 @@ export default function ThesisPage() {
             <p>
               The distinction looks small in a sentence and turns out to be everything in practice.
             </p>
+            <SubHeader>An example: Mia at Google</SubHeader>
             <p>
               Take a simple example. A user mentions in March that her sister Mia is interviewing at Google. In May the interview happens. The user is anxious about it. In June Mia gets the offer. In July she accepts it. In August she has started.
             </p>
@@ -228,6 +236,7 @@ export default function ThesisPage() {
             <p>
               The reason this matters is that the user does not actually want the past. The user wants the current shape of the situation. When you ask a friend who knows you well how your sister is doing at her new job, you do not want a transcript of every previous conversation about her. You want what your friend has already reconstructed in their head: that Mia is doing fine, that the early stress has settled, that the team turned out to be a good fit. Reconstruction. Not retrieval.
             </p>
+            <SubHeader>Reconstruction, not retrieval</SubHeader>
             <p>
               You cannot get reconstruction by storing more memory. You cannot get it by adding a longer context window. You cannot get it by stacking RAG on top of a vector store. The reason is structural. Retrieval-based systems return the past as it was filed. Reconstruction-based systems return the present as it is now. They are different operations, on different data, requiring a different primitive underneath.
             </p>
@@ -239,6 +248,7 @@ export default function ThesisPage() {
             <p>
               Continuity is not a feature. It is a system property with a specific shape. The shape was derived empirically, by building a continuity system, running it against hundreds of narratives, and identifying what breaks when each property is absent. It was articulated formally in the ATANT paper as seven required characteristics. Any system claiming continuity must satisfy all seven. A system that satisfies six is not a continuity system that needs polish. It is something else.
             </p>
+            <SubHeader>The seven required properties</SubHeader>
             <p>The seven properties:</p>
             <PropertyList>
               <Property n="1" title="Persistence beyond session">
@@ -263,6 +273,7 @@ export default function ThesisPage() {
                 The pattern works across multiple application domains (clinical, professional, personal, educational) without architectural modification. The same continuity primitive serves a doctor tracking a patient and a developer tracking a project.
               </Property>
             </PropertyList>
+            <SubHeader>Why these seven</SubHeader>
             <p>
               The seven properties together describe what a continuity layer must be. They are not arbitrary engineering choices. They are derivations of what it structurally takes for a being (a person, a project, a relationship, a clinical case) to be carried forward through time without resetting. The formal version of the argument lives in the ATANT paper on arXiv. The compressed version is here.
             </p>
@@ -283,9 +294,11 @@ export default function ThesisPage() {
             <p>
               The architectural name for the implementation is Decomposed Trace Convergence Memory, or DTCM. Two ideas do most of the work. The specific structural taxonomy, scoring formulation, and implementation details live in the technical documentation and in the ATANT paper on arXiv; what follows is the shape at the altitude this thesis operates at.
             </p>
+            <SubHeader>Decomposition at write time</SubHeader>
             <p>
               The first idea is decomposition at write time. When an interaction arrives, DTCM does not store the raw text and let the model figure out what it meant later. It breaks the interaction into multiple independent structural traces, each capturing a different dimension of meaning, indexed separately. The work of understanding is done once, by the layer, with no language model in the loop. It is not repeated by the model on every read.
             </p>
+            <SubHeader>Reconstruction at read time</SubHeader>
             <p>
               The second idea is reconstruction at read time. When a question arrives, the layer does not return a ranked list of similar past chunks. It rebuilds the current state of the situation by combining the active traces, weighted along multiple dimensions of relevance to the moment being asked about. The combination is multiplicative rather than additive, so that a trace that has gone stale cannot dominate even when its surface similarity to the query is high. A trace from three years ago that is no longer active does not pollute a reconstruction of what is true today.
             </p>
@@ -295,6 +308,7 @@ export default function ThesisPage() {
             <p>
               The contrast with retrieval is sharp. A retrieval system, given the question &ldquo;how is the user doing?&rdquo;, returns the most similar past statements about the user. A reconstruction system returns the current state: what is going on right now, what is still active, what has changed since last time. The model that runs on top no longer has to guess. The understanding has already been done by the layer.
             </p>
+            <SubHeader>Why DTCM is not a database</SubHeader>
             <p>
               This is why DTCM is not a database with extra features. A database stores what happened. DTCM stores why it mattered, when it mattered, who it mattered to, how it felt, and what pattern it fits, and reconstructs the right combination before anyone asks. That is not storage. That is cognition infrastructure.
             </p>
@@ -318,9 +332,11 @@ export default function ThesisPage() {
             <p>
               That sentence is what continuity, properly built, looks like to anyone using it. The architecture is what makes the sentence true. The sentence is what makes the architecture matter.
             </p>
+            <SubHeader>The insulin pump, unprompted</SubHeader>
             <p>
               Take the insulin pump again. A pump with continuity does not wait to be told. It has already decomposed every reading into traces, recognized the patterns those readings fit, weighted the temporal currency of each one, and reconstructed the current state of the patient&rsquo;s body. By the time the meal arrives, the pump already knows the shape of the next two hours and acts on it. No human in the loop. No instruction. The pump understands why it is dosing this way and when, because the layer underneath has done that understanding for it.
             </p>
+            <SubHeader>The same shape across systems</SubHeader>
             <p>
               The same shape holds in any system that has to act in context.
             </p>
@@ -353,6 +369,7 @@ export default function ThesisPage() {
             <p>
               The name is <strong className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)]">kenosis</strong>.
             </p>
+            <SubHeader>What kenosis actually means</SubHeader>
             <p>
               Kenosis (<span className="font-[family-name:var(--font-newsreader)] italic">κένωσις</span>) is a Greek noun meaning &ldquo;emptying,&rdquo; from the verb <span className="font-[family-name:var(--font-newsreader)] italic">κενόω</span> (<em>kenoō</em>), &ldquo;to pour out, to make empty.&rdquo; It is a technical term in Christian theology because of one specific use of the verb in the New Testament. In Philippians 2:7, Paul writes that Christ <span className="font-[family-name:var(--font-newsreader)] italic">ἑαυτὸν ἐκένωσεν</span>, &ldquo;emptied himself,&rdquo; in the act of taking on human form. The verb is reflexive. The subject and the object are the same. Christ is not emptied by something else. Christ pours himself out.
             </p>
@@ -362,6 +379,7 @@ export default function ThesisPage() {
             <p>
               The deepest insight in the theological tradition is this: kenosis is extension through giving, not reduction by elimination. The act of pouring forward requires the presence of what is poured. The self that gives is the same self that receives the gift. The pour and the persistence are not two acts but one structural movement.
             </p>
+            <SubHeader>Where engineering meets theology</SubHeader>
             <p>
               This is a metaphor, until you read it next to the technical requirements of a continuity system, and then it stops being a metaphor. Read the two side by side.
             </p>
@@ -380,6 +398,7 @@ export default function ThesisPage() {
             <p>
               Each technical property is a kenotic requirement in software clothing. The properties were not derived from theology. They were derived empirically, by building a continuity system and finding out what breaks when each property is missing. The fact that they map exactly onto a theological pattern that has been described carefully for two millennia is convergent evidence that the same architecture is being described from two directions.
             </p>
+            <SubHeader>Why the company is named Kenotic</SubHeader>
             <p>
               This is why the company is called Kenotic Labs. The name is not a vibe. It is not a Greek word picked because it sounds serious. It is the precise name for the architecture the company is engineering. If the company were building anything other than continuity infrastructure, the name would be wrong. Because the company is building continuity infrastructure, the name is exact.
             </p>
@@ -394,6 +413,7 @@ export default function ThesisPage() {
             <p>
               If kenosis is the mechanism, the property that mechanism produces has a different name. The property is what the engineering work actually delivers. The name for the property is <strong className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)]">Alpha and Omega</strong>.
             </p>
+            <SubHeader>The biblical origin</SubHeader>
             <p>
               The phrase comes from the Book of Revelation, where it appears three times. Revelation 1:8: &ldquo;I am the Alpha and the Omega, says the Lord God, who is, and who was, and who is to come, the Almighty.&rdquo; Revelation 21:6: &ldquo;I am the Alpha and the Omega, the beginning and the end.&rdquo; Revelation 22:13: &ldquo;I am the Alpha and the Omega, the first and the last, the beginning and the end.&rdquo;
             </p>
@@ -412,9 +432,11 @@ export default function ThesisPage() {
             <p>
               That is not a secularization of the verse. It is the same structural claim translated to a different scale. The technical name for what the passages describe is continuity: the property of holding past, present, and future in one continuous identity, with no rupture between them. In Christian theology only the divine can make the full claim. But the structural pattern, a being for whom time does not cause loss, in whom the entire arc is held, is exactly what continuity infrastructure engineers, at a much smaller scale, for machines.
             </p>
+            <SubHeader>The structural pattern in software</SubHeader>
             <p>
               A continuity layer holds the entire arc of an interaction (or a relationship, a project, a clinical case, a year of conversations) in one continuous state. The beginning of the arc is not lost when the end arrives. The beginning is, in fact, the substance from which the end is given.
             </p>
+            <SubHeader>The logo as fused glyph</SubHeader>
             <p>
               The Kenotic Labs logo is therefore not an arbitrary mark. It is a single fused glyph in which the <span className="font-[family-name:var(--font-newsreader)]">Α</span> and the <span className="font-[family-name:var(--font-newsreader)]">Ω</span> share strokes at the center and merge into one symbol. The Alpha forms the left side; the Omega forms the right; the shared structural elements at the center are where the two letters become one. The fusion is the meaning. A logo of two separate letters would be typography. A single fused glyph is a symbol with structural meaning of its own. The Alpha pours forward into the Omega. The Omega is shaped by the Alpha that came before it. Neither letter is diminished. The mark is one being, not two letters. Each visual property of the fusion is a translation of the underlying conceptual property into shape.
             </p>
@@ -429,18 +451,22 @@ export default function ThesisPage() {
             <p>
               Continuity is not finished when the first layer ships. The first layer is the foundation. The architecture has at least four layers and they compose. Each one follows from the previous one. None of them require breaking physics.
             </p>
+            <SubHeader>Layer 1 — External infrastructure</SubHeader>
             <p>
               <strong className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)]">Layer 1. External infrastructure.</strong> This is the layer that exists today. Continuity sits underneath any model, callable as an SDK. The model reads from it and writes to it. The weights are unchanged. The same continuity state works whether the model on top is GPT, Claude, Llama, or something not yet released. The proof point is ATANT: an open benchmark, a published paper on arXiv (2604.06710), a reference implementation, and results that hold at 100% accuracy in isolated mode (250 stories, 1,835 of 1,835 questions), 100% in 50-story cumulative mode, and 96% at 250-story cumulative scale, with no language model in the evaluation loop. The reference implementation runs on an 8GB GPU. This is not a research promise. It is a layer that ships now.
             </p>
+            <SubHeader>Layer 2 — Model integration</SubHeader>
             <p>
               <strong className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)]">Layer 2. Model integration.</strong> The continuity layer stops being only external and starts shaping how the model itself operates. This is frontier research with no prior art at the integration altitude we are interested in. The specifics of that research direction are not public. What this layer needs is a research team and the time to do the work properly. That is the next funding round.
             </p>
+            <SubHeader>Layer 3 — Dedicated infrastructure</SubHeader>
             <p>
               <strong className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)]">Layer 3. Dedicated infrastructure.</strong> The continuity layer becomes a module any device manufacturer can integrate, with a standard interface that any model can plug into. Phones, laptops, cars, clinics, robots, libraries. Each device gets a continuity node. The model that runs on top can be anything. The node underneath is the thing that makes any model coherent over time.
             </p>
             <p>
               This is the Qualcomm pattern, not the OpenAI pattern. Qualcomm does not make the phone. Qualcomm makes the thing every phone needs underneath. The model layer of AI is well on its way to being a Qualcomm-shaped category: many models, many vendors, many price points, no single one of which is the durable thing. The continuity layer underneath, properly defined and properly built, can be the thing every model needs.
             </p>
+            <SubHeader>Layer 4 — Human infrastructure</SubHeader>
             <p>
               <strong className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)]">Layer 4. Human infrastructure.</strong> Continuity stops being only an AI primitive and becomes a primitive for human systems. Institutions, families, professions, fields of knowledge. The thing that gets carried forward is not just facts or code or chat history. It is the structured state of how people, projects, and bodies of work cohere over years and decades.
             </p>
@@ -467,12 +493,14 @@ export default function ThesisPage() {
             <p>
               People who hear this argument often ask why now. The answer has two parts and both are independent of any one company.
             </p>
+            <SubHeader>The model layer hits a physics wall</SubHeader>
             <p>
               The first part is that the model layer is hitting a physics wall. Not a metaphor. A real one, written about in 2025 by serious researchers and visible in the cost curves of the frontier labs. The components are stacking up. Memory access costs scale quadratically with distance, and almost all chip area is now allocated to memory. GPU performance-per-dollar peaked around 2018, and the remaining one-off optimizations have very little headroom. Transformer architectures are near-optimal for what they are. Independent of all that, the continual-learning gap is structural. On the only domain where the current frontier model scores zero (long-term memory across sessions), bigger does not help. Scale does not bend the curve.
             </p>
             <p>
               Both sides of the public AGI debate, the side that says push through the wall and the side that says give up on it, are arguing about the same thing: making the model bigger and smarter. Neither is talking about what happens between interactions. Neither is talking about what carries forward when the session ends. The bottleneck nobody is naming is not intelligence. It is that intelligence resets.
             </p>
+            <SubHeader>Continuity is not compute-bound</SubHeader>
             <p>
               The second part is that continuity, unlike scaling, is not compute-bound. The reference implementation of the continuity layer passes the ATANT benchmark on an 8GB GPU. The whole point of moving the work into the layer is that the layer is small, deterministic, and runs anywhere. While the model labs are spending billions on the next training run, the continuity layer ships now, on commodity hardware, and provides an order-of-magnitude improvement in usefulness without touching the weights.
             </p>
@@ -487,16 +515,19 @@ export default function ThesisPage() {
             <p>
               The mistake most people make when they hear this argument is to ask what the addressable market for AI continuity is. The honest answer is that the market does not yet exist. There is no procurement category. There is no Gartner quadrant. There is no line item for continuity in any company&rsquo;s tech stack. The closest things (vector databases, memory APIs, RAG pipelines, agent frameworks) partially touch the problem, none of them solve it, and none of them are sold as continuity.
             </p>
+            <SubHeader>Categories belong to whoever defines them</SubHeader>
             <p>This is not a problem. This is the opportunity.</p>
             <p>
               Categories that get created get owned by whoever defined them. The companies that defined object storage, edge compute, observability, payment infrastructure, and content delivery are still the companies that sell those categories two decades later. The first mover in a real new category does not just take share. They take the frame. Every subsequent entrant has to argue against the original definition, which is the hardest position in any market to hold.
             </p>
+            <SubHeader>ATANT defines the frame</SubHeader>
             <p>
               ATANT is the frame. It is the first published evaluation framework for continuity. It defines continuity as a system property with seven required characteristics. It introduces a 10-checkpoint methodology and four compliance levels. It tests across 250 narratives, 1,835 verification questions, and six life domains. It runs without any language model in the evaluation loop, which means the results are deterministic and reproducible. Any team building a continuity system can run their architecture against it and publish the results, the same way any team building a database publishes TPC numbers or any team building an approximate-nearest-neighbor index publishes ANN-Benchmarks numbers.
             </p>
             <p>
               When continuity becomes a recognized architectural requirement, which the physics wall will accelerate, every AI deployment will need it. Every agent will need it. Every device will need it. The first benchmark anyone runs will be the one that already exists. The first reference implementation anyone studies will be the one that defined the category. That is how a category gets owned without taking share from anyone.
             </p>
+            <SubHeader>Customers, not competitors</SubHeader>
             <p>
               The companies that currently ship &ldquo;AI memory&rdquo; products (Mem0, Zep, and the in-house memory features of the frontier labs) are not competitors to the continuity layer. They are eventual customers. They need a way to prove their memory systems actually work. ATANT is the only published evaluation framework for that property. When they want to benchmark, they come to the standard. When they want deterministic, model-independent continuity underneath their tools, they license the layer. The Qualcomm pattern again: do not build the phone, build the thing every phone needs underneath.
             </p>
@@ -511,9 +542,11 @@ export default function ThesisPage() {
             <p>
               A continuity layer that carries forward what matters about a person, a relationship, a clinical case, or a project is the most useful piece of infrastructure AI has not yet built. It is also, in the wrong hands, the most dangerous.
             </p>
+            <SubHeader>The danger in the data</SubHeader>
             <p>
               A system that knows what makes someone anxious, who they love, what they are afraid of, what their unfinished situations are, and how all of that has changed over years is not just a memory. It is leverage. Every advertising company would pay anything for it. Every government would want it. Every corporation that profits from engagement would optimize for the moment of maximum vulnerability if the architecture allowed it. The same property that makes continuity useful for the person it carries (it knows them well, it does not forget, it accumulates) makes it dangerous in any hands that do not belong to that person.
             </p>
+            <SubHeader>Privacy as physics, not policy</SubHeader>
             <p>
               The right defense against that danger is not a privacy policy. Privacy policies are changed by board votes. Privacy features are toggled by flags. The right defense is architectural. The continuity layer must be built so that the data physically does not leave the device. On-device storage. Local-only computation. Encryption at rest. No server ever touching the traces. Not because regulation requires it. Because the architecture makes that the only way the system can run.
             </p>
@@ -523,6 +556,7 @@ export default function ThesisPage() {
             <p>
               Promises can be revised. Constraints cannot. The continuity layer is being built so that the surveillance use of the technology is not blocked by a rule but by the shape of the system itself.
             </p>
+            <SubHeader>Governance is part of the product</SubHeader>
             <p>
               The same logic applies to corporate governance. It is not enough to build the architecture this way and hope future investors leave it alone. The danger is not a competitor. The danger is a well-intentioned board member, three rounds into the future, who notices that revenue would multiply if the data were synced to the cloud &ldquo;just for backup.&rdquo; Or that anonymized emotional patterns are technically not personal data. Or that enterprise clients need centralized access to user continuity. Each of those is reasonable-sounding. Each destroys the architecture.
             </p>
@@ -663,6 +697,14 @@ export default function ThesisPage() {
 }
 
 /* ───────── Components ───────── */
+
+function SubHeader({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 className="font-[family-name:var(--font-fraunces)] text-[clamp(1.15rem,1.9vw,1.45rem)] font-semibold leading-[1.25] tracking-[-0.005em] text-[var(--kl-text)] mt-14 mb-5">
+      {children}
+    </h3>
+  );
+}
 
 function SectionHeader({ number, title }: { number: string; title: string }) {
   return (

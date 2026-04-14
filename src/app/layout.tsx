@@ -342,7 +342,12 @@ export default function RootLayout({
               alternateName: "Kenotic",
               url: "https://kenoticlabs.com",
               inLanguage: "en",
-              publisher: { "@id": "https://kenoticlabs.com#org" },
+              publisher: {
+                "@type": "Organization",
+                "@id": "https://kenoticlabs.com#org",
+                name: "Kenotic Labs",
+                url: "https://kenoticlabs.com",
+              },
               description:
                 "The continuity layer for AI systems. Infrastructure that preserves and reconstructs the living state of a situation across time. Built around DTCM and validated by ATANT.",
               potentialAction: {
@@ -383,6 +388,7 @@ export default function RootLayout({
                 "Kenotic Labs builds the continuity layer for AI systems. The company's thesis is that AI fails not because it lacks information, but because it cannot preserve the living state of a situation across time. Kenotic is building a continuity primitive and situation-aware infrastructure layer based on DTCM, reconstruction, and persistent structured understanding.",
               founder: {
                 "@type": "Person",
+                "@id": "https://kenoticlabs.com#founder",
                 name: "Samuel Sameer Tanguturi",
                 givenName: "Samuel",
                 additionalName: "Sameer",
@@ -517,6 +523,7 @@ export default function RootLayout({
               name: "ATANT: An Evaluation Framework for AI Continuity",
               author: {
                 "@type": "Person",
+                "@id": "https://kenoticlabs.com#founder",
                 name: "Samuel Sameer Tanguturi",
                 affiliation: {
                   "@type": "Organization",
