@@ -69,14 +69,29 @@ export default function DemoPage() {
           transition={{ delay: 0.3, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="w-full max-w-[1080px] relative"
         >
-          {/* Gold frame accent */}
-          <div className="absolute -inset-[1px] bg-gradient-to-br from-[color:color-mix(in_srgb,var(--kl-signal)_55%,transparent)] via-[color:color-mix(in_srgb,var(--kl-accent)_40%,transparent)] to-[color:color-mix(in_srgb,var(--kl-signal)_35%,transparent)] opacity-50 blur-[1px] pointer-events-none" />
+          {/* Caption header above the frame */}
+          <div className="flex items-center justify-between mb-3 px-1">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-[6px] w-[6px] rounded-full bg-[var(--kl-signal)]" />
+              <span className="font-[family-name:var(--font-lato)] text-[0.66rem] tracking-[0.22em] uppercase text-[color:color-mix(in_srgb,var(--kl-canvas)_70%,transparent)] font-semibold">
+                Continuity survives a full model kill
+              </span>
+            </div>
+            <span className="font-[family-name:var(--font-lato)] text-[0.62rem] tracking-[0.18em] uppercase text-[color:color-mix(in_srgb,var(--kl-canvas)_45%,transparent)]">
+              Recorded live &middot; unedited
+            </span>
+          </div>
 
-          <div className="relative aspect-video bg-[color:color-mix(in_srgb,var(--kl-text)_92%,black)] border border-[color:color-mix(in_srgb,var(--kl-signal)_22%,transparent)] overflow-hidden">
+          {/* Gold frame accent */}
+          <div className="absolute inset-x-0 top-[30px] bottom-0 -m-[1px] bg-gradient-to-br from-[color:color-mix(in_srgb,var(--kl-signal)_55%,transparent)] via-[color:color-mix(in_srgb,var(--kl-accent)_40%,transparent)] to-[color:color-mix(in_srgb,var(--kl-signal)_35%,transparent)] opacity-50 blur-[1px] pointer-events-none" />
+
+          <div className="relative aspect-video bg-[color:color-mix(in_srgb,var(--kl-text)_92%,black)] rounded-sm border border-[color:color-mix(in_srgb,var(--kl-signal)_22%,transparent)] overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
             <video
               controls
+              controlsList="nodownload noplaybackrate noremoteplayback"
+              disablePictureInPicture
               playsInline
-              preload="none"
+              preload="metadata"
               poster="/videos/demo-poster.jpg"
               className="w-full h-full object-contain"
             >
@@ -93,6 +108,11 @@ export default function DemoPage() {
             <span className="text-[var(--kl-signal)]">·</span>
             <span>8GB GPU</span>
           </div>
+
+          {/* What you're about to see — one-line description */}
+          <p className="mt-4 font-[family-name:var(--font-newsreader)] italic text-[0.95rem] text-[color:color-mix(in_srgb,var(--kl-canvas)_62%,transparent)] text-center max-w-[720px] mx-auto leading-[1.55]">
+            A local Phi-4 Mini is force-killed mid-session. The process restarts from scratch. Without prompting, it resumes with full awareness of what the user had been doing, feeling, and saying.
+          </p>
         </motion.div>
 
         {/* Detail block below video */}
@@ -138,7 +158,15 @@ export default function DemoPage() {
             rel="noopener noreferrer"
             className="text-[color:color-mix(in_srgb,var(--kl-signal)_70%,transparent)] hover:text-[var(--kl-signal)] transition-colors duration-500"
           >
-            Paper on arXiv →
+            v1.0 Paper →
+          </a>
+          <a
+            href="https://arxiv.org/abs/2604.10981"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[color:color-mix(in_srgb,var(--kl-signal)_70%,transparent)] hover:text-[var(--kl-signal)] transition-colors duration-500"
+          >
+            v1.1 Paper →
           </a>
           <a
             href="https://github.com/Kenotic-Labs/ATANT"

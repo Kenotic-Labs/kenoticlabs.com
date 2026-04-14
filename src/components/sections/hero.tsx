@@ -20,26 +20,44 @@ export function Hero() {
       <SectionOverlay variant="hero" />
       <div className="relative z-10 w-full max-w-[1180px] mx-auto px-8 md:px-16 pt-36 md:pt-40 pb-24 lg:pb-28">
         <div className="max-w-[860px]">
-            <motion.a
-              href="https://arxiv.org/abs/2604.06710"
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.9, ease }}
-              className="group inline-flex items-center gap-3 mb-8 px-4 py-2 rounded-full border border-[color:color-mix(in_srgb,var(--kl-accent)_22%,transparent)] bg-white/60 backdrop-blur-sm hover:border-[color:color-mix(in_srgb,var(--kl-accent)_45%,transparent)] hover:bg-white/80 transition-all duration-500"
+              className="flex flex-wrap items-center gap-2 mb-8"
             >
-              <span className="relative flex h-[7px] w-[7px]">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--kl-accent)] opacity-60" />
-                <span className="relative inline-flex h-[7px] w-[7px] rounded-full bg-[var(--kl-accent)]" />
-              </span>
-              <span className="font-[family-name:var(--font-lato)] text-[0.65rem] font-bold tracking-[2.4px] uppercase text-[var(--kl-text)]">
-                New &middot; April 8, 2026
-              </span>
-              <span className="font-[family-name:var(--font-lato)] text-[0.72rem] text-[var(--kl-text-muted)] group-hover:text-[var(--kl-text)] transition-colors duration-500">
-                ATANT: An Evaluation Framework for AI Continuity &middot; arXiv:2604.06710 &rarr;
-              </span>
-            </motion.a>
+              <a
+                href="https://arxiv.org/abs/2604.10981"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[color:color-mix(in_srgb,var(--kl-accent)_22%,transparent)] bg-white/60 backdrop-blur-sm hover:border-[color:color-mix(in_srgb,var(--kl-accent)_45%,transparent)] hover:bg-white/80 transition-all duration-500"
+              >
+                <span className="relative flex h-[7px] w-[7px]">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--kl-accent)] opacity-60" />
+                  <span className="relative inline-flex h-[7px] w-[7px] rounded-full bg-[var(--kl-accent)]" />
+                </span>
+                <span className="font-[family-name:var(--font-lato)] text-[0.65rem] font-bold tracking-[2.4px] uppercase text-[var(--kl-text)]">
+                  New &middot; April 13, 2026
+                </span>
+                <span className="font-[family-name:var(--font-lato)] text-[0.72rem] text-[var(--kl-text-muted)] group-hover:text-[var(--kl-text)] transition-colors duration-500">
+                  ATANT v1.1: Positioning Continuity Evaluation &middot; arXiv:2604.10981 &rarr;
+                </span>
+              </a>
+              <a
+                href="https://arxiv.org/abs/2604.06710"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[color:color-mix(in_srgb,var(--kl-accent)_16%,transparent)] bg-white/40 backdrop-blur-sm hover:border-[color:color-mix(in_srgb,var(--kl-accent)_38%,transparent)] hover:bg-white/70 transition-all duration-500"
+              >
+                <span className="inline-flex h-[7px] w-[7px] rounded-full bg-[color:color-mix(in_srgb,var(--kl-accent)_55%,transparent)]" />
+                <span className="font-[family-name:var(--font-lato)] text-[0.65rem] font-bold tracking-[2.4px] uppercase text-[var(--kl-text-muted)]">
+                  v1.0 &middot; April 8, 2026
+                </span>
+                <span className="font-[family-name:var(--font-lato)] text-[0.72rem] text-[var(--kl-text-muted)] group-hover:text-[var(--kl-text)] transition-colors duration-500">
+                  ATANT: An Evaluation Framework for AI Continuity &middot; arXiv:2604.06710 &rarr;
+                </span>
+              </a>
+            </motion.div>
             <h1
               aria-label="We gave machines intelligence. We never gave them time."
               className="font-[family-name:var(--font-playfair)] text-[clamp(3.4rem,6vw,5.8rem)] font-bold text-[var(--kl-text)] leading-[1.02] tracking-[-1.8px] mb-0"

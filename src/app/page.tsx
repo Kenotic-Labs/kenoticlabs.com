@@ -97,12 +97,18 @@ export default function Home() {
             Every artifact is verifiable. Every number is reproducible. Every benchmark runs without any language model in the evaluation loop.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
             <Receipt
-              label="Paper"
+              label="Paper v1.0"
               title="ATANT framework, on arXiv"
-              meta="2604.06710 · April 2026 · cs.AI"
+              meta="2604.06710 · April 8, 2026 · cs.AI"
               href="https://arxiv.org/abs/2604.06710"
+            />
+            <Receipt
+              label="Paper v1.1"
+              title="Positioning against memory benchmarks"
+              meta="2604.10981 · April 13, 2026 · cs.AI"
+              href="https://arxiv.org/abs/2604.10981"
             />
             <Receipt
               label="Benchmark"

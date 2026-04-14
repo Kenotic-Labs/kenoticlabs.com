@@ -71,7 +71,17 @@ export function Evidence() {
                     hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(45,106,79,0.25)]
                     transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
                 >
-                  Read the Paper
+                  Read v1.0 Paper
+                </a>
+                <a
+                  href="https://arxiv.org/abs/2604.10981"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-8 py-4 bg-[#2D6A4F] text-white text-sm font-bold tracking-[1.5px] uppercase
+                    hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(45,106,79,0.25)]
+                    transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                >
+                  Read v1.1 Paper
                 </a>
                 <a
                   href="https://github.com/Kenotic-Labs/ATANT"
@@ -156,8 +166,9 @@ export function Evidence() {
                   </tbody>
                 </table>
                 <p className="text-[#6B6B6B] text-xs italic mt-4 px-2">
-                  NURA reference implementation, ATANT v1.0. Results published
-                  in arXiv:2604.06710. The corpus grows. The standard evolves.
+                  NURA reference implementation, ATANT v1.0 (arXiv:2604.06710).
+                  v1.1 positions the framework against existing memory benchmarks
+                  (arXiv:2604.10981). The corpus grows. The standard evolves.
                 </p>
               </div>
             </Reveal>

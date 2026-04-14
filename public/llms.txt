@@ -169,6 +169,7 @@ Resources:
 - ATANT v1.0 paper on arXiv: https://arxiv.org/abs/2604.06710
 - ATANT v1.0 paper page on Hugging Face: https://huggingface.co/papers/2604.06710
 - ATANT v1.1 paper on arXiv: https://arxiv.org/abs/2604.10981
+- ATANT v1.1 paper page on Hugging Face: https://huggingface.co/papers/2604.10981
 - Hugging Face organization: https://huggingface.co/Kenotic-Labs
 
 ## Founder

@@ -15,8 +15,8 @@ export function Publications() {
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {/* Card 1: Paper (now leading; gold border, dated marker) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {/* Card 1: v1.0 Paper */}
           <Reveal delay={0.1}>
             <a
               href="https://arxiv.org/abs/2604.06710"
@@ -30,17 +30,17 @@ export function Publications() {
                 <span className="text-[#B39B5C] text-[0.6rem] font-bold tracking-[3px] uppercase font-[family-name:var(--font-lato)]">
                   Paper &middot; arXiv cs.AI
                 </span>
-                <span className="text-[#2D6A4F] text-[0.58rem] font-bold tracking-[2.4px] uppercase font-[family-name:var(--font-lato)] px-2 py-[2px] border border-[#2D6A4F]/40 rounded-full">
-                  New &middot; April 8, 2026
+                <span className="text-[#6B6B6B] text-[0.58rem] font-bold tracking-[2.4px] uppercase font-[family-name:var(--font-lato)] px-2 py-[2px] border border-[#6B6B6B]/30 rounded-full">
+                  v1.0 &middot; April 8, 2026
                 </span>
               </div>
               <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-[#1A1A1A] mt-3 mb-2">
                 ATANT: An Evaluation Framework for AI Continuity
               </h3>
               <p className="text-[#6B6B6B] text-sm leading-relaxed mb-3">
-                Single-author research paper. Defines continuity as a system property,
-                introduces the 10-checkpoint methodology, reports the reference
-                implementation results, names the limitations.
+                Defines continuity as a system property with 7 required characteristics.
+                Introduces the 10-checkpoint methodology, 4 compliance levels, and the
+                250-story reference corpus.
               </p>
               <p className="text-[#6B6B6B] text-xs font-[family-name:var(--font-lato)]">
                 Samuel Sameer Tanguturi &middot; arXiv:2604.06710 &rarr;
@@ -48,7 +48,39 @@ export function Publications() {
             </a>
           </Reveal>
 
-          {/* Card 2: Standard (green left border) */}
+          {/* Card 2: v1.1 Paper */}
+          <Reveal delay={0.15}>
+            <a
+              href="https://arxiv.org/abs/2604.10981"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-8 bg-white rounded-lg border-l-[3px] border-l-[#B39B5C] shadow-[0_1px_3px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.04)]
+                hover:shadow-[0_2px_8px_rgba(0,0,0,0.12),0_8px_24px_rgba(0,0,0,0.06)] hover:-translate-y-[2px]
+                transition-all duration-[1s] ease-[cubic-bezier(0.22,1,0.36,1)] group"
+            >
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="text-[#B39B5C] text-[0.6rem] font-bold tracking-[3px] uppercase font-[family-name:var(--font-lato)]">
+                  Paper &middot; arXiv cs.AI
+                </span>
+                <span className="text-[#2D6A4F] text-[0.58rem] font-bold tracking-[2.4px] uppercase font-[family-name:var(--font-lato)] px-2 py-[2px] border border-[#2D6A4F]/40 rounded-full">
+                  New &middot; April 13, 2026
+                </span>
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-[#1A1A1A] mt-3 mb-2">
+                ATANT v1.1: Positioning Continuity Evaluation
+              </h3>
+              <p className="text-[#6B6B6B] text-sm leading-relaxed mb-3">
+                Structural critique of 7 memory benchmarks (LOCOMO, LongMemEval, BEAM,
+                MemoryBench, Zep, Letta/MemGPT, RULER). Median 1/7 continuity coverage.
+                Publishes 8.8% LOCOMO alongside 96% ATANT as a calibration pair.
+              </p>
+              <p className="text-[#6B6B6B] text-xs font-[family-name:var(--font-lato)]">
+                Samuel Sameer Tanguturi &middot; arXiv:2604.10981 &rarr;
+              </p>
+            </a>
+          </Reveal>
+
+          {/* Card 3: Standard (green left border) */}
           <Reveal delay={0.2}>
             <a
               href="https://github.com/Kenotic-Labs/ATANT"
