@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     "AI memory layer",
     "Kenotic Labs blog",
   ],
+  alternates: { canonical: "/insights" },
 };
 
 export default function BlogIndex() {
