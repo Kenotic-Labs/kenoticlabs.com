@@ -24,18 +24,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: article.description,
     keywords: article.keywords,
     alternates: { canonical: `/insights/${slug}` },
+    authors: [{ name: "Samuel Sameer Tanguturi" }],
     openGraph: {
       type: "article",
       title: article.title,
       description: article.description,
+      url: `https://kenoticlabs.com/insights/${slug}`,
       publishedTime: article.date,
-      authors: ["Kenotic Labs"],
+      authors: ["Samuel Sameer Tanguturi"],
       siteName: "Kenotic Labs",
+      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: article.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description: article.description,
+      images: ["/opengraph-image"],
     },
   };
 }
@@ -163,7 +167,7 @@ export default async function ArticlePage({ params }: Props) {
                 url: "https://kenoticlabs.com/Main-Logo-BGR.png",
               },
             },
-            image: [`https://kenoticlabs.com/insights/${article.slug}/opengraph-image`],
+            image: [{ "@type": "ImageObject", url: "https://kenoticlabs.com/opengraph-image", width: 1200, height: 630 }],
             keywords: article.keywords.join(", "),
             articleSection: article.category,
             mainEntityOfPage: {
@@ -243,6 +247,38 @@ export default async function ArticlePage({ params }: Props) {
           {article.content}
         </ReactMarkdown>
       </main>
+
+      {/* Related reading */}
+      {(() => {
+        const currentIdx = articles.findIndex((a) => a.slug === article.slug);
+        const related = [1, 2, 3].map((offset) => articles[(currentIdx + offset) % articles.length]);
+        return (
+          <section className="max-w-[740px] mx-auto px-8 pb-4">
+            <div className="pt-10 border-t border-[color:color-mix(in_srgb,var(--kl-accent)_14%,transparent)]">
+              <div className="font-[family-name:var(--font-lato)] text-[0.7rem] tracking-[0.24em] uppercase text-[var(--kl-signal)] font-bold mb-6">
+                Related reading
+              </div>
+              <ul className="flex flex-col gap-5">
+                {related.map((rel) => (
+                  <li key={rel.slug}>
+                    <Link
+                      href={`/insights/${rel.slug}`}
+                      className="group block"
+                    >
+                      <div className="font-[family-name:var(--font-playfair)] text-[1.1rem] font-semibold text-[var(--kl-text)] group-hover:text-[var(--kl-accent)] transition-colors duration-500 leading-snug">
+                        {rel.title}
+                      </div>
+                      <div className="font-[family-name:var(--font-lato)] text-[0.82rem] text-[var(--kl-text-muted)] mt-1">
+                        {rel.category} · {rel.readingTime} read
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* CTA */}
       <div className="max-w-[740px] mx-auto px-8 pb-16">

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     publishedTime: "2026-04-11",
     authors: ["Samuel Sameer Tanguturi"],
     siteName: "Kenotic Labs",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "The Continuity Layer — Kenotic Labs" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
     description:
       "Why intelligence needs an architecture for what it carries forward.",
     creator: "@kenoticlabs",
+    images: ["/opengraph-image"],
   },
 };
 

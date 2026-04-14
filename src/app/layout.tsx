@@ -337,17 +337,22 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
+              "@id": "https://kenoticlabs.com#website",
               name: "Kenotic Labs",
               alternateName: "Kenotic",
               url: "https://kenoticlabs.com",
               inLanguage: "en",
-              publisher: {
-                "@type": "Organization",
-                name: "Kenotic Labs",
-                url: "https://kenoticlabs.com",
-              },
+              publisher: { "@id": "https://kenoticlabs.com#org" },
               description:
                 "The continuity layer for AI systems. Infrastructure that preserves and reconstructs the living state of a situation across time. Built around DTCM and validated by ATANT.",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: "https://kenoticlabs.com/insights?q={search_term_string}",
+                },
+                "query-input": "required name=search_term_string",
+              },
             }),
           }}
         />
@@ -358,14 +363,22 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
+              "@id": "https://kenoticlabs.com#org",
               name: "Kenotic Labs",
               alternateName: [
                 "Kenotic",
                 "Kenotic Labs AI",
                 "Kenotic Continuity Layer",
               ],
+              disambiguatingDescription:
+                "AI infrastructure company. Not to be confused with Kinetic Labs (keyboards), Kenosis Group, or any similarly named entity.",
               url: "https://kenoticlabs.com",
-              logo: "https://kenoticlabs.com/Main-Logo-BGR.png",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://kenoticlabs.com/Main-Logo-BGR.png",
+                width: 1024,
+                height: 1024,
+              },
               description:
                 "Kenotic Labs builds the continuity layer for AI systems. The company's thesis is that AI fails not because it lacks information, but because it cannot preserve the living state of a situation across time. Kenotic is building a continuity primitive and situation-aware infrastructure layer based on DTCM, reconstruction, and persistent structured understanding.",
               founder: {
@@ -399,16 +412,17 @@ export default function RootLayout({
                   "https://huggingface.co/papers/2604.06710",
                 ],
               },
-              foundingDate: "2025",
+              foundingDate: "2025-01-01",
               sameAs: [
                 "https://github.com/Kenotic-Labs",
                 "https://github.com/Kenotic-Labs/ATANT",
                 "https://arxiv.org/abs/2604.06710",
+                "https://arxiv.org/abs/2604.10981",
                 "https://huggingface.co/Kenotic-Labs",
                 "https://huggingface.co/datasets/Kenotic-Labs/ATANTV1.0-corpus",
                 "https://huggingface.co/papers/2604.06710",
+                "https://huggingface.co/papers/2604.10981",
                 "https://linkedin.com/company/kenotic-labs",
-                "https://reddit.com/r/Kenoticlabs",
               ],
               knowsAbout: [
                 "AI continuity",
@@ -498,10 +512,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ScholarlyArticle",
-              mainEntityOfPage: {
-                "@type": "WebPage",
-                "@id": "https://kenoticlabs.com",
-              },
+              "@id": "https://arxiv.org/abs/2604.06710",
               headline: "ATANT: An Evaluation Framework for AI Continuity",
               name: "ATANT: An Evaluation Framework for AI Continuity",
               author: {

@@ -309,7 +309,7 @@ export default function Home() {
 
       {/* ═══════════ 13. RESEARCH LAB CLOSE ═══════════
           Identity statement before the conversion surface. */}
-      <section className="py-28 md:py-36 bg-[var(--kl-canvas)]">
+      <section id="about" className="py-28 md:py-36 bg-[var(--kl-canvas)] scroll-mt-24">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start">
             <div>
@@ -320,7 +320,10 @@ export default function Home() {
             </div>
             <div className="space-y-6 font-[family-name:var(--font-source-serif)] text-[1.1rem] md:text-[1.15rem] leading-[1.7] text-[var(--kl-text-muted)]">
               <p>
-                Kenotic Labs builds the continuity layer for AI. The name comes from <em className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)] not-italic font-medium">kenosis</em>, a Greek term for self-pouring without loss of self. The architecture and the name describe the same pattern: a structured state that moves forward into the next moment without losing what it was.
+                <strong className="text-[var(--kl-text)]">Kenotic Labs is an AI infrastructure company building the continuity layer for AI</strong> — infrastructure that preserves and reconstructs the living state of a situation across time. Founded in 2025 by <strong className="text-[var(--kl-text)]">Samuel Sameer Tanguturi</strong>. Based in Michigan, USA. Core architecture: DTCM (Decomposed Trace Convergence Memory). Validated by the ATANT evaluation framework (arXiv:2604.06710, arXiv:2604.10981).
+              </p>
+              <p>
+                The name comes from <em className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)] not-italic font-medium">kenosis</em>, a Greek term for self-pouring without loss of self. The architecture and the name describe the same pattern: a structured state that moves forward into the next moment without losing what it was.
               </p>
               <p>
                 The work is in public. The framework is on arXiv. The benchmark is on GitHub. The reference implementation passes the framework. The corpus is on Hugging Face. The thesis is on this site.

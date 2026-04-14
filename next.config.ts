@@ -3,6 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.kenoticlabs.com" }],
+        destination: "https://kenoticlabs.com/:path*",
+        permanent: true,
+      },
       { source: "/blog", destination: "/insights", permanent: true },
       { source: "/blog/:slug", destination: "/insights/:slug", permanent: true },
       { source: "/research", destination: "/insights", permanent: true },

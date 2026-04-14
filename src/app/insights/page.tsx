@@ -4,9 +4,9 @@ import { SiteOverlay } from "@/components/site-overlay";
 import { articles } from "@/lib/articles";
 
 export const metadata: Metadata = {
-  title: "Blog - AI Continuity Research and Analysis",
+  title: "Research & Analysis — AI Continuity Insights",
   description:
-    "Why AI forgets everything. Why chatbots make you repeat yourself. Why AI agents fail. Why RAG hallucinates. Research and analysis from Kenotic Labs on the AI continuity problem and how to fix it.",
+    "Essays on AI continuity, DTCM, ATANT, and the infrastructure layer for situational intelligence. Research and analysis from Kenotic Labs.",
   keywords: [
     "AI continuity blog",
     "AI memory research",
@@ -18,11 +18,51 @@ export const metadata: Metadata = {
     "Kenotic Labs blog",
   ],
   alternates: { canonical: "/insights" },
+  openGraph: {
+    type: "website",
+    title: "Research & Analysis — AI Continuity Insights | Kenotic Labs",
+    description:
+      "Essays on AI continuity, DTCM, ATANT, and the infrastructure layer for situational intelligence.",
+    url: "https://kenoticlabs.com/insights",
+    siteName: "Kenotic Labs",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Kenotic Labs Insights" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Research & Analysis — AI Continuity Insights | Kenotic Labs",
+    description:
+      "Essays on AI continuity, DTCM, ATANT, and the infrastructure layer.",
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function BlogIndex() {
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": "https://kenoticlabs.com/insights#blog",
+    url: "https://kenoticlabs.com/insights",
+    name: "Kenotic Labs Insights",
+    description:
+      "Essays on AI continuity, DTCM, ATANT, and the infrastructure layer for situational intelligence.",
+    publisher: { "@id": "https://kenoticlabs.com#org" },
+    blogPost: articles.map((a) => ({
+      "@type": "BlogPosting",
+      headline: a.title,
+      url: `https://kenoticlabs.com/insights/${a.slug}`,
+      datePublished: a.date,
+      author: {
+        "@type": "Person",
+        name: "Samuel Sameer Tanguturi",
+      },
+    })),
+  };
   return (
     <div className="relative min-h-screen bg-[var(--kl-canvas)] overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       <div aria-hidden="true" className="site-tech-overlay pointer-events-none absolute inset-0 z-[0]" />
       <SiteOverlay />
       <div className="relative z-[2]">
