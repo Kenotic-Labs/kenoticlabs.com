@@ -17,6 +17,93 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is Kenotic Labs?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Kenotic Labs is an AI infrastructure company building the continuity layer for AI — infrastructure that preserves and reconstructs the living state of a situation across time. Founded in 2025 by Samuel Sameer Tanguturi. Core architecture: DTCM (Decomposed Trace Convergence Memory). Validated by the ATANT evaluation framework (arXiv:2604.06710, arXiv:2604.10981). Not to be confused with Kinetic Labs (keyboards) or Kenosis Group.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Why does AI forget everything between sessions?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "AI systems are session-based - they process each conversation independently with no persistent state. This is why ChatGPT forgets what you told it, why Siri can't remember your preferences, and why chatbots make you repeat yourself. The solution is a continuity layer - infrastructure that persists, updates, and reconstructs context across sessions. Kenotic Labs builds this layer.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Why is ChatGPT getting worse at remembering things?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "ChatGPT and other AI assistants appear to get worse because they lack true continuity - the ability to carry forward what matters, update it when things change, and reconstruct it when needed. Context windows and memory features are band-aids. Real continuity requires a dedicated infrastructure layer that handles persistence, temporal ordering, disambiguation, and reconstruction.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I add persistent memory to my AI agent?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Most AI agents fail because they lose state between tasks. Solving that requires a continuity layer that preserves what still matters, keeps track of change, and reconstructs the current situation when needed. Kenotic Labs provides this as infrastructure so AI agents can carry persistent context, temporal reasoning, and disambiguation across sessions.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Why do AI agents fail 80% of the time?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "AI agent reliability is fundamentally a memory and state management problem. With 85% per-step accuracy, a 10-step workflow only succeeds 20% of the time. Agents fail because they cannot maintain context across steps, forget previous failures, and lose track of what has changed. A continuity layer solves this by providing persistent state, update tracking, and situation reconstruction.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the difference between RAG and continuity?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "RAG (Retrieval Augmented Generation) retrieves similar chunks of text. Continuity reconstructs the current living state of a situation - including what changed, what still matters, and what should happen next. RAG finds related past things. Continuity understands the present. This is why RAG still hallucinates 17-33% of the time while deterministic reconstruction achieves near-perfect accuracy.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is DTCM and why is it not just a database?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "DTCM stands for Decomposed Trace Convergence Memory. It is Kenotic Labs' architecture for preserving and reconstructing the living state of a situation. A normal database stores facts and makes the model interpret them again from scratch. DTCM is designed as a continuity architecture, not just storage, so the system can remain oriented to what is active, what changed, and what should happen next.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is ATANT?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "ATANT (Automated Test for Acceptance of Narrative Truth) is the first open evaluation framework for measuring AI continuity. It tests whether an AI system can persist, update, disambiguate, and reconstruct meaningful context across time using 250 narrative tests and 1,835 verification questions across 10 checkpoints. Published by Kenotic Labs (arXiv:2604.06710).",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Why do chatbots make me repeat myself?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "90% of customers have to repeat information to chatbots because these systems lack continuity - they cannot carry forward context from previous interactions. Each session starts from zero. A continuity layer would let chatbots remember your history, track what changed, and reconstruct your situation without asking again.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Why can't Siri or Alexa remember anything?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Voice assistants like Siri and Alexa are session-based - they process each command independently. They lack a continuity layer that would let them remember your preferences, track recurring patterns, and build understanding over time. The technology exists to fix this - it requires persistent memory infrastructure that survives across sessions, updates, and device restarts.",
+      },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <motion.main
@@ -24,6 +111,10 @@ export default function Home() {
       animate="visible"
       className="relative overflow-hidden bg-[var(--kl-canvas)] text-[var(--kl-text)]"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* ═══════════ 1. HERO ═══════════
           "We gave machines intelligence. We never gave them time."
           The existing hero with the word-by-word cascading animation.

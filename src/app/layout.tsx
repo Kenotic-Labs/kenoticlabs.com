@@ -126,10 +126,10 @@ export const metadata: Metadata = {
     "ChatGPT getting worse",
     "AI is getting dumber",
     "why is AI so bad",
-    "AI doesnt understand context",
-    "AI cant remember",
+    "AI doesn't understand context",
+    "AI can't remember",
     "AI forgot everything",
-    "ChatGPT doesnt remember",
+    "ChatGPT doesn't remember",
     "ChatGPT memory not working",
     "why does AI forget",
     "how to make AI remember",
@@ -141,21 +141,21 @@ export const metadata: Metadata = {
     "chatbot memory loss",
     "make chatbot remember",
     "AI ignores what I said",
-    "AI cant follow instructions",
+    "AI can't follow instructions",
     // Voice assistant frustrations
-    "Siri doesnt remember",
+    "Siri doesn't remember",
     "Alexa forgot",
     "voice assistant memory",
     // Customer support frustrations
     "chatbot made me repeat myself",
     "AI customer service frustrating",
     "customer service bot useless",
-    "chatbot cant remember conversation",
+    "chatbot can't remember conversation",
     // AI coding assistant context
     "Copilot context window",
     "Cursor loses context",
     "AI coding assistant forgets",
-    "AI doesnt understand my codebase",
+    "AI doesn't understand my codebase",
     // AI agent failures
     "AI agent keeps failing",
     "AI agent reliability",
@@ -209,12 +209,12 @@ export const metadata: Metadata = {
     "chat gpt forgets",
     "chat gpt forgot everything",
     "chat gpt lost context",
-    "chat gpt wont remember",
-    "chat gpt cant remember",
+    "chat gpt won't remember",
+    "chat gpt can't remember",
     // Informal frustration phrases (from OpenAI forums, GitHub issues, Quora)
     "chatgpt suddenly forgot everything",
     "chatgpt abandoned me",
-    "chatgpt memory doesnt work even when I tell it to remember",
+    "chatgpt memory doesn't work even when I tell it to remember",
     "chatgpt memory will not save",
     "chatgpt got worse over the months",
     "why is chatgpt so bad now",
@@ -259,13 +259,13 @@ export const metadata: Metadata = {
     "alexa plus problems",
     "alexa plus bad",
     "alexa failing simple commands",
-    "siri still cant remember",
+    "siri still can't remember",
     // Chatbot customer service real phrases (from CNBC, CMSWire, Zendesk)
     "i hate customer service chatbots",
     "chatbot made me start over",
-    "chatbot doesnt know my history",
+    "chatbot doesn't know my history",
     "have to repeat myself to chatbot",
-    "chatbot cant remember previous conversation",
+    "chatbot can't remember previous conversation",
     // RAG real failure phrases (from TechCrunch, Mindee, HuggingFace)
     "rag still hallucinates",
     "rag retrieves wrong documents",
@@ -279,8 +279,8 @@ export const metadata: Metadata = {
     "80 percent ai projects fail",
     // Patient/healthcare real phrases (from Healthcare IT News, Nature)
     "patient has to repeat history every visit",
-    "doctor doesnt know my history",
-    "ehr doesnt capture context",
+    "doctor doesn't know my history",
+    "ehr doesn't capture context",
   ],
   authors: [{ name: "Kenotic Labs" }, { name: "Samuel Sameer Tanguturi" }],
   creator: "Kenotic Labs",
@@ -487,98 +487,6 @@ export default function RootLayout({
                 "Model independence - works with any LLM",
                 "Deterministic reconstruction - no hallucinated connections",
                 "ATANT validated - 250 stories, 1835 questions, 100% accuracy",
-              ],
-            }),
-          }}
-        />
-        {/* FAQ schema - targets frustration searches */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: [
-                {
-                  "@type": "Question",
-                  name: "Why does AI forget everything between sessions?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "AI systems are session-based - they process each conversation independently with no persistent state. This is why ChatGPT forgets what you told it, why Siri cant remember your preferences, and why chatbots make you repeat yourself. The solution is a continuity layer - infrastructure that persists, updates, and reconstructs context across sessions. Kenotic Labs builds this layer.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Why is ChatGPT getting worse at remembering things?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "ChatGPT and other AI assistants appear to get worse because they lack true continuity - the ability to carry forward what matters, update it when things change, and reconstruct it when needed. Context windows and memory features are band-aids. Real continuity requires a dedicated infrastructure layer that handles persistence, temporal ordering, disambiguation, and reconstruction.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "How do I add persistent memory to my AI agent?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Most AI agents fail because they lose state between tasks. Solving that requires a continuity layer that preserves what still matters, keeps track of change, and reconstructs the current situation when needed. Kenotic Labs provides this as infrastructure so AI agents can carry persistent context, temporal reasoning, and disambiguation across sessions.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Why do AI agents fail 80% of the time?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "AI agent reliability is fundamentally a memory and state management problem. With 85% per-step accuracy, a 10-step workflow only succeeds 20% of the time. Agents fail because they cannot maintain context across steps, forget previous failures, and lose track of what has changed. A continuity layer solves this by providing persistent state, update tracking, and situation reconstruction.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What is the difference between RAG and continuity?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "RAG (Retrieval Augmented Generation) retrieves similar chunks of text. Continuity reconstructs the current living state of a situation - including what changed, what still matters, and what should happen next. RAG finds related past things. Continuity understands the present. This is why RAG still hallucinates 17-33% of the time while deterministic reconstruction achieves near-perfect accuracy.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What is DTCM and why is it not just a database?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "DTCM stands for Decomposed Trace Convergence Memory. It is Kenotic Labs' architecture for preserving and reconstructing the living state of a situation. A normal database stores facts and makes the model interpret them again from scratch. DTCM is designed as a continuity architecture, not just storage, so the system can remain oriented to what is active, what changed, and what should happen next.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "If this layer became real, what would begin to change?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "If the continuity layer becomes real, machines begin to understand why something matters, when action should happen, and what should happen next without being re-instructed from zero every time. In software, that changes how systems behave. In hardware, it points toward a different kind of machine substrate. The larger implication is that new businesses, new product categories, and new operating models become possible once situational coherence exists as infrastructure.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What is ATANT?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "ATANT (Automated Test for Acceptance of Narrative Truth) is the first open evaluation framework for measuring AI continuity. It tests whether an AI system can persist, update, disambiguate, and reconstruct meaningful context across time using 250 narrative tests and 1,835 verification questions across 10 checkpoints. Published by Kenotic Labs.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Why do chatbots make me repeat myself?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "90% of customers have to repeat information to chatbots because these systems lack continuity - they cannot carry forward context from previous interactions. Each session starts from zero. A continuity layer would let chatbots remember your history, track what changed, and reconstruct your situation without asking again.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Why cant Siri or Alexa remember anything?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Voice assistants like Siri and Alexa are session-based - they process each command independently. They lack a continuity layer that would let them remember your preferences, track recurring patterns, and build understanding over time. The technology exists to fix this - it requires persistent memory infrastructure that survives across sessions, updates, and device restarts.",
-                  },
-                },
               ],
             }),
           }}

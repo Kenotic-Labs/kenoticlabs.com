@@ -47,9 +47,9 @@ export default async function ArticlePage({ params }: Props) {
 
   const markdownComponents = {
     h1: ({ children }: { children?: React.ReactNode }) => (
-      <h1 className="font-[family-name:var(--font-playfair)] text-[clamp(2rem,4vw,3rem)] font-bold text-[var(--kl-text)] leading-[1.1] mt-14 mb-8">
+      <h2 className="font-[family-name:var(--font-playfair)] text-[clamp(1.6rem,3vw,2.3rem)] font-bold text-[var(--kl-text)] leading-[1.15] mt-14 mb-6">
         {children}
-      </h1>
+      </h2>
     ),
     h2: ({ children }: { children?: React.ReactNode }) => (
       <h2 className="font-[family-name:var(--font-playfair)] text-[clamp(1.4rem,2.5vw,2rem)] font-bold text-[var(--kl-text)] leading-[1.15] mt-14 mb-6">
@@ -223,8 +223,8 @@ export default async function ArticlePage({ params }: Props) {
           <h1 className="font-[family-name:var(--font-playfair)] text-[clamp(2rem,4vw,3rem)] font-bold text-[var(--kl-text)] leading-[1.1] mb-8">
             {article.title}
           </h1>
-          <div className="flex items-center gap-6 text-[var(--kl-text-muted)] text-sm font-[family-name:var(--font-lato)]">
-            <span>Kenotic Labs</span>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[var(--kl-text-muted)] text-sm font-[family-name:var(--font-lato)]">
+            <span>By <span className="text-[var(--kl-text)] font-semibold">Samuel Sameer Tanguturi</span>, Founder · Kenotic Labs</span>
             <span>
               {new Date(article.date).toLocaleDateString("en-US", {
                 month: "long",
