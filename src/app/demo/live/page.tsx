@@ -15,7 +15,7 @@ import type { LifeTimeline } from '../data/types';
    Live data instead of hardcoded personas.
    ═══════════════════════════════════════════════════════════ */
 
-const DEFAULT_URL = 'http://localhost:7130';
+const DEFAULT_URL = process.env.NEXT_PUBLIC_RECONSTRUCT_URL ?? 'http://localhost:7130';
 const STORAGE_KEY = 'reconstruct-server-url';
 const TOKEN_KEY = 'reconstruct-server-token';
 
@@ -75,12 +75,14 @@ export default function LiveTimelinePage() {
       localStorage.setItem(TOKEN_KEY, bearerToken);
     } catch (err: any) {
       setState('error');
+      const msg = err?.message || String(err);
+      console.error('[Reconstruct] Connection error:', err);
       if (err.name === 'AbortError' || err.name === 'TimeoutError') {
-        setError(`Cannot reach ${url} — is Reconstruct running?`);
-      } else if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
-        setError(`Cannot reach ${url} — is Reconstruct running?`);
+        setError(`Timeout reaching ${url} — is Reconstruct running?`);
+      } else if (msg.includes('Failed to fetch') || msg.includes('NetworkError') || msg.includes('fetch')) {
+        setError(`Cannot reach ${url} — is Reconstruct running? (${msg})`);
       } else {
-        setError(err.message || 'Connection failed');
+        setError(msg);
       }
     }
   }, []);

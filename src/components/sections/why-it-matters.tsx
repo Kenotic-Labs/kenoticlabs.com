@@ -5,7 +5,7 @@ import { SectionOverlay } from "@/components/section-overlay";
 
 export function WhyItMatters() {
   return (
-    <section id="why" className="relative py-32 lg:py-40" style={{ backgroundColor: "#F5F3EE" }}>
+    <section id="what-we-do" className="relative py-32 lg:py-40" style={{ backgroundColor: "#F5F3EE" }}>
       <SectionOverlay variant="left" />
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 xl:px-24">
         {/* Two cards side by side. Goethe slightly larger */}

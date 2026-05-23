@@ -11,6 +11,7 @@ import { Values } from "@/components/sections/values";
 import { Provenance } from "@/components/sections/provenance";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
+import { articles } from "@/lib/articles";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -26,7 +27,7 @@ const faqSchema = {
       name: "What is Kenotic Labs?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Kenotic Labs is an AI infrastructure company building the continuity layer for AI — infrastructure that preserves and reconstructs the living state of a situation across time. Founded in 2025 by Samuel Sameer Tanguturi. Core architecture: DTCM (Decomposed Trace Convergence Memory). Validated by the ATANT evaluation framework (arXiv:2604.06710, arXiv:2604.10981). Not to be confused with Kinetic Labs (keyboards) or Kenosis Group.",
+        text: "Kenotic Labs is an AI infrastructure company building the continuity layer for AI — infrastructure that preserves and reconstructs the living state of a situation across time. Founded in 2025 by Samuel Sameer Tanguturi. Core architecture: DTCM (Decomposed Trace Convergence Memory). Validated by the ATANT evaluation framework (arXiv:2604.06710, arXiv:2604.10981). Thesis: The Continuity Layer (arXiv:2604.17273). Not to be confused with Kinetic Labs (keyboards) or Kenosis Group.",
       },
     },
     {
@@ -124,13 +125,68 @@ export default function Home() {
       {/* ═══════════ 2. POSITION STATEMENT ═══════════
           Single sentence on a surface break. The belief the rest of the
           page defends. */}
-      <section className="py-24 md:py-32 border-y border-[var(--kl-border)] bg-[var(--kl-surface)]">
+      <section id="vision" className="py-24 md:py-32 border-y border-[var(--kl-border)] bg-[var(--kl-surface)]">
         <div className="mx-auto max-w-[960px] px-6 md:px-10 text-center">
           <div className="inline-block h-[1px] w-16 bg-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)] mb-10" />
           <blockquote className="font-[family-name:var(--font-newsreader)] italic text-[clamp(1.75rem,4vw,2.75rem)] leading-[1.3] text-[var(--kl-text)] tracking-[-0.01em]">
             We believe the company that owns the continuity layer will define the next decade of AI infrastructure.
           </blockquote>
           <div className="inline-block h-[1px] w-16 bg-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)] mt-10" />
+        </div>
+      </section>
+
+      {/* ═══════════ 2.5 THE DISTINCTION ═══════════
+          Type 1 retrieval memory vs. Type 2 understanding continuity.
+          Investor-facing differentiation from Mem0 / Rewind / Personal.ai / ChatGPT Memory. */}
+      <section className="py-28 md:py-36 bg-[var(--kl-canvas)]">
+        <div className="mx-auto max-w-[1120px] px-6 md:px-10">
+          <p className="text-[var(--kl-signal)] text-[0.72rem] font-bold tracking-[3px] uppercase font-[family-name:var(--font-lato)] mb-5">
+            The distinction
+          </p>
+          <h2 className="font-[family-name:var(--font-fraunces)] text-[clamp(2rem,4.4vw,3.2rem)] leading-[1.14] text-[var(--kl-text)] tracking-[-0.02em] mb-10 max-w-[900px]">
+            Other memory products store what you said. Kenotic stores what the AI understood about you while you were saying it.
+          </h2>
+          <p className="font-[family-name:var(--font-newsreader)] text-[clamp(1.05rem,1.5vw,1.2rem)] leading-[1.6] text-[var(--kl-text-muted)] max-w-[820px] mb-16">
+            Two categories get called &ldquo;memory.&rdquo; They are not the same primitive.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            <div className="rounded-lg border border-[var(--kl-border)] bg-[var(--kl-surface)] p-8 md:p-10">
+              <p className="text-[var(--kl-text-muted)] text-[0.68rem] font-bold tracking-[2.5px] uppercase font-[family-name:var(--font-lato)] mb-4">
+                Type 1 · Retrieval memory
+              </p>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[var(--kl-text)] mb-5 leading-[1.2]">
+                What you said.
+              </h3>
+              <p className="font-[family-name:var(--font-newsreader)] text-[1rem] leading-[1.65] text-[var(--kl-text-muted)] mb-5">
+                Stores facts. &ldquo;User lives in Michigan. Prefers Python. Has a sister named Mia.&rdquo; When asked, it looks up the fact and injects it into the prompt.
+              </p>
+              <p className="font-[family-name:var(--font-newsreader)] text-[0.95rem] leading-[1.6] text-[var(--kl-text-soft)] italic">
+                Mem0, Rewind, Personal.ai, ChatGPT Memory, Letta, Zep. A filing cabinet of index cards.
+              </p>
+            </div>
+
+            <div className="rounded-lg border-l-[3px] border-l-[var(--kl-accent)] border-t border-r border-b border-[var(--kl-border)] bg-[var(--kl-panel)] p-8 md:p-10">
+              <p className="text-[var(--kl-accent)] text-[0.68rem] font-bold tracking-[2.5px] uppercase font-[family-name:var(--font-lato)] mb-4">
+                Type 2 · Understanding continuity
+              </p>
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl font-bold text-[var(--kl-text)] mb-5 leading-[1.2]">
+                What the AI understood about you.
+              </h3>
+              <p className="font-[family-name:var(--font-newsreader)] text-[1rem] leading-[1.65] text-[var(--kl-text-muted)] mb-5">
+                Stores the AI&rsquo;s evolving perception of you. Not &ldquo;what you said&rdquo; but the arc of the conversation, the thread you were on, the things left unresolved, the working model. Switch to a new AI and it resumes the same understanding.
+              </p>
+              <p className="font-[family-name:var(--font-newsreader)] text-[0.95rem] leading-[1.6] text-[var(--kl-text-soft)] italic">
+                Kenotic. The impression a long-time friend has of you. Not a diff; the entire working tree.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-16 border-t border-[var(--kl-border)] pt-10 max-w-[880px]">
+            <p className="font-[family-name:var(--font-newsreader)] text-[1.05rem] leading-[1.7] text-[var(--kl-text-muted)]">
+              The labs with the capital to build Type 2 are incentivized not to — portable understanding across Claude, GPT, and Gemini is anti-platform-moat for them. The companies building memory today are architecturally committed to fact retrieval. Kenotic sits in the gap, with an architecture designed to encode the structured understanding state itself.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -175,7 +231,7 @@ export default function Home() {
       {/* ═══════════ 6. THE WORK, IN PUBLIC ═══════════
           Dark inverted band. Four receipt cards + the 96% callout.
           The proof that the specification is met. */}
-      <section id="receipts" className="py-28 md:py-36 bg-[var(--kl-text)] text-[var(--kl-canvas)] border-y border-[var(--kl-text)]">
+      <section id="evidence" className="py-28 md:py-36 bg-[var(--kl-text)] text-[var(--kl-canvas)] border-y border-[var(--kl-text)]">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <div className="mb-6 flex items-center gap-4 text-[0.7rem] tracking-[0.2em] uppercase text-[var(--kl-signal)] font-semibold">
             <span className="h-[1px] w-10 bg-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)]" />
@@ -200,6 +256,12 @@ export default function Home() {
               title="Positioning against memory benchmarks"
               meta="2604.10981 · April 13, 2026 · cs.AI"
               href="https://arxiv.org/abs/2604.10981"
+            />
+            <Receipt
+              label="Thesis"
+              title="The Continuity Layer, on arXiv"
+              meta="2604.17273 · April 2026 · cs.AI"
+              href="https://arxiv.org/abs/2604.17273"
             />
             <Receipt
               label="Benchmark"
@@ -290,6 +352,29 @@ export default function Home() {
               <Arrow />
             </Link>
           </div>
+
+          <div className="mt-14 border-t border-[var(--kl-border)] pt-10 max-w-[720px] mx-auto">
+            <p className="text-[0.7rem] tracking-[0.2em] uppercase text-[var(--kl-text-soft)] font-semibold mb-6 text-center">
+              Latest research
+            </p>
+            <ul className="space-y-4">
+              {articles.map((article) => (
+                <li key={article.slug}>
+                  <Link
+                    href={`/insights/${article.slug}`}
+                    className="group flex items-baseline gap-3"
+                  >
+                    <span className="shrink-0 text-[0.65rem] tracking-[0.15em] uppercase text-[var(--kl-signal)] font-semibold">
+                      {article.category}
+                    </span>
+                    <span className="font-[family-name:var(--font-newsreader)] text-[1.05rem] text-[var(--kl-text-muted)] group-hover:text-[var(--kl-text)] transition-colors duration-500">
+                      {article.title}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -320,13 +405,13 @@ export default function Home() {
             </div>
             <div className="space-y-6 font-[family-name:var(--font-source-serif)] text-[1.1rem] md:text-[1.15rem] leading-[1.7] text-[var(--kl-text-muted)]">
               <p>
-                <strong className="text-[var(--kl-text)]">Kenotic Labs is an AI infrastructure company building the continuity layer for AI</strong> — infrastructure that preserves and reconstructs the living state of a situation across time. Founded in 2025 by <strong className="text-[var(--kl-text)]">Samuel Sameer Tanguturi</strong>. Based in Michigan, USA. Core architecture: DTCM (Decomposed Trace Convergence Memory). Validated by the ATANT evaluation framework (arXiv:2604.06710, arXiv:2604.10981).
+                <strong className="text-[var(--kl-text)]">Kenotic Labs is an AI infrastructure company building the continuity layer for AI</strong> — infrastructure that preserves and reconstructs the living state of a situation across time. Founded in 2025 by <strong className="text-[var(--kl-text)]">Samuel Sameer Tanguturi</strong>. Based in Michigan, USA. Core architecture: DTCM (Decomposed Trace Convergence Memory). Validated by the ATANT evaluation framework (arXiv:2604.06710, arXiv:2604.10981). Thesis: arXiv:2604.17273.
               </p>
               <p>
                 The name comes from <em className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)] not-italic font-medium">kenosis</em>, a Greek term for self-pouring without loss of self. The architecture and the name describe the same pattern: a structured state that moves forward into the next moment without losing what it was.
               </p>
               <p>
-                The work is in public. The framework is on arXiv. The benchmark is on GitHub. The reference implementation passes the framework. The corpus is on Hugging Face. The thesis is on this site.
+                The work is in public. The framework is on arXiv. The benchmark is on GitHub. The reference implementation passes the framework. The corpus is on Hugging Face. The thesis is on arXiv and on this site.
               </p>
               <p className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-text)] text-[1.2rem] md:text-[1.3rem] leading-[1.5]">
                 The layer is the company. The model is the processor. The layer is what stays.

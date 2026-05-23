@@ -79,6 +79,13 @@ export default function ThesisPage() {
       { "@type": "Thing", name: "Decomposed Trace Convergence Memory" },
       { "@type": "Thing", name: "ATANT" },
     ],
+    sameAs: "https://arxiv.org/abs/2604.17273",
+    identifier: {
+      "@type": "PropertyValue",
+      propertyID: "arXiv",
+      value: "2604.17273",
+      url: "https://arxiv.org/abs/2604.17273",
+    },
     citation: {
       "@type": "ScholarlyArticle",
       name: "ATANT: An Evaluation Framework for AI Continuity",
@@ -117,12 +124,12 @@ export default function ThesisPage() {
             <span>Founder, Kenotic Labs</span>
             <span className="text-[var(--kl-signal)]">·</span>
             <a
-              href="https://arxiv.org/abs/2604.06710"
+              href="https://arxiv.org/abs/2604.17273"
               target="_blank"
               rel="noopener noreferrer"
               className="underline decoration-[var(--kl-signal)] underline-offset-4 hover:text-[var(--kl-text)] transition-colors"
             >
-              arXiv:2604.06710
+              arXiv:2604.17273
             </a>
           </div>
 
@@ -638,6 +645,13 @@ export default function ThesisPage() {
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               <RelatedCard
+                label="Thesis on arXiv"
+                title="The Continuity Layer"
+                meta="arXiv:2604.17273 · April 2026 · cs.AI"
+                href="https://arxiv.org/abs/2604.17273"
+                external
+              />
+              <RelatedCard
                 label="Paper"
                 title="ATANT: An Evaluation Framework for AI Continuity"
                 meta="arXiv:2604.06710 · April 2026"
@@ -752,18 +766,6 @@ function Property({ n, title, children }: { n: string; title: string; children: 
   );
 }
 
-function Equation({ main, caption }: { main: string; caption: string }) {
-  return (
-    <div className="my-10 p-8 bg-[var(--kl-text)] text-[var(--kl-canvas)] text-center">
-      <div className="font-[family-name:var(--font-newsreader)] italic text-[clamp(1.3rem,2.5vw,1.75rem)] tracking-[0.02em]">
-        {main}
-      </div>
-      <div className="mt-3 text-[0.72rem] tracking-[0.15em] uppercase text-[color:color-mix(in_srgb,var(--kl-canvas)_60%,transparent)] font-medium">
-        {caption}
-      </div>
-    </div>
-  );
-}
 
 function RelatedCard({
   label,
