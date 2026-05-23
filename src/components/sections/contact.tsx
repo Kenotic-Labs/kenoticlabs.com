@@ -178,7 +178,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="relative grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
+    <section id="contact" className="relative grid grid-cols-1 lg:grid-cols-2 overflow-hidden scroll-mt-24">
       <SectionOverlay variant="split" />
 
       <div className="bg-[#F5F3EE] px-8 md:px-16 lg:px-20 py-24 lg:py-32 flex flex-col justify-center">

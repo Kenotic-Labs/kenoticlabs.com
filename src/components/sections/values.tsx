@@ -28,7 +28,7 @@ const values = [
 
 export function Values() {
   return (
-    <section id="values" className="bg-[#F7F5F2] py-32 lg:py-40 relative overflow-hidden">
+    <section id="values" className="bg-[#F7F5F2] py-32 lg:py-40 relative overflow-hidden scroll-mt-24">
       <SectionOverlay variant="right" />
       <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16 xl:px-24">
         <Reveal>

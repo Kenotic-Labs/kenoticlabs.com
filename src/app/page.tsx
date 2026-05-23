@@ -125,7 +125,7 @@ export default function Home() {
       {/* ═══════════ 2. POSITION STATEMENT ═══════════
           Single sentence on a surface break. The belief the rest of the
           page defends. */}
-      <section id="vision" className="py-24 md:py-32 border-y border-[var(--kl-border)] bg-[var(--kl-surface)]">
+      <section id="vision" className="py-24 md:py-32 border-y border-[var(--kl-border)] bg-[var(--kl-surface)] scroll-mt-24">
         <div className="mx-auto max-w-[960px] px-6 md:px-10 text-center">
           <div className="inline-block h-[1px] w-16 bg-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)] mb-10" />
           <blockquote className="font-[family-name:var(--font-newsreader)] italic text-[clamp(1.75rem,4vw,2.75rem)] leading-[1.3] text-[var(--kl-text)] tracking-[-0.01em]">
@@ -197,7 +197,7 @@ export default function Home() {
 
       {/* ═══════════ 4. SEVEN PROPERTIES ═══════════
           The full specification. Derived empirically, formalized in ATANT. */}
-      <section id="properties" className="py-28 md:py-36 bg-[var(--kl-surface)] border-y border-[var(--kl-border)]">
+      <section id="properties" className="py-28 md:py-36 bg-[var(--kl-surface)] border-y border-[var(--kl-border)] scroll-mt-24">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <SectionEyebrow>The specification</SectionEyebrow>
           <SectionTitle>Seven required properties of continuity.</SectionTitle>
@@ -231,7 +231,7 @@ export default function Home() {
       {/* ═══════════ 6. THE WORK, IN PUBLIC ═══════════
           Dark inverted band. Four receipt cards + the 96% callout.
           The proof that the specification is met. */}
-      <section id="evidence" className="py-28 md:py-36 bg-[var(--kl-text)] text-[var(--kl-canvas)] border-y border-[var(--kl-text)]">
+      <section id="evidence" className="py-28 md:py-36 bg-[var(--kl-text)] text-[var(--kl-canvas)] border-y border-[var(--kl-text)] scroll-mt-24">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <div className="mb-6 flex items-center gap-4 text-[0.7rem] tracking-[0.2em] uppercase text-[var(--kl-signal)] font-semibold">
             <span className="h-[1px] w-10 bg-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)]" />
@@ -296,7 +296,7 @@ export default function Home() {
 
       {/* ═══════════ 6. USE CASES ═══════════
           One primitive. Many applications. */}
-      <section id="use-cases" className="py-28 md:py-36 bg-[var(--kl-surface)] border-y border-[var(--kl-border)]">
+      <section id="use-cases" className="py-28 md:py-36 bg-[var(--kl-surface)] border-y border-[var(--kl-border)] scroll-mt-24">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <SectionEyebrow>The scope</SectionEyebrow>
           <SectionTitle>One primitive. Many applications.</SectionTitle>
@@ -323,7 +323,7 @@ export default function Home() {
 
       {/* ═══════════ 9. THESIS CTA ═══════════
           The invitation to the full argument. */}
-      <section id="thesis" className="py-32 md:py-40 bg-[var(--kl-panel)] border-y border-[var(--kl-border)]">
+      <section id="thesis" className="py-32 md:py-40 bg-[var(--kl-panel)] border-y border-[var(--kl-border)] scroll-mt-24">
         <div className="mx-auto max-w-[900px] px-6 md:px-10 text-center">
           <div className="mb-6 flex items-center justify-center gap-4 text-[0.7rem] tracking-[0.2em] uppercase text-[var(--kl-signal)] font-semibold">
             <span className="h-[1px] w-10 bg-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)]" />
