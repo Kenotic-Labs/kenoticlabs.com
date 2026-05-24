@@ -3,9 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-// Existing sections from the live site — preserved and slotted into the new arc
 import { Hero } from "@/components/sections/hero";
-import { WhyItMatters } from "@/components/sections/why-it-matters";
 import { Publications } from "@/components/sections/publications";
 import { Values } from "@/components/sections/values";
 import { Provenance } from "@/components/sections/provenance";
@@ -67,7 +65,7 @@ const faqSchema = {
       name: "What is the difference between RAG and continuity?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "RAG (Retrieval Augmented Generation) retrieves similar chunks of text. Continuity reconstructs the current living state of a situation - including what changed, what still matters, and what should happen next. RAG finds related past things. Continuity understands the present. This is why RAG still hallucinates 17-33% of the time while deterministic reconstruction achieves near-perfect accuracy.",
+        text: "RAG (Retrieval Augmented Generation) retrieves similar chunks of text. Continuity reconstructs the current living state of a situation - including what changed, what still matters, and what should happen next. RAG finds related past things. Continuity understands the present.",
       },
     },
     {
@@ -116,33 +114,34 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+
       {/* ═══════════ 1. HERO ═══════════
-          "We gave machines intelligence. We never gave them time."
-          The existing hero with the word-by-word cascading animation.
-          Claim of the page. */}
+          PLC origin story. The $50K factory robot line.
+          Two CTAs: demo + thesis. */}
       <Hero />
 
-      {/* ═══════════ 2. POSITION STATEMENT ═══════════
-          Single sentence on a surface break. The belief the rest of the
-          page defends. */}
+      {/* ═══════════ 2. WHAT IT DOES ═══════════
+          The product in four lines. ChatGPT → Claude → Cursor → next week. */}
       <section id="vision" className="py-24 md:py-32 border-y border-[var(--kl-border)] bg-[var(--kl-surface)] scroll-mt-24">
         <div className="mx-auto max-w-[960px] px-6 md:px-10 text-center">
           <div className="inline-block h-[1px] w-16 bg-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)] mb-10" />
-          <blockquote className="font-[family-name:var(--font-newsreader)] italic text-[clamp(1.75rem,4vw,2.75rem)] leading-[1.3] text-[var(--kl-text)] tracking-[-0.01em]">
-            We believe the company that owns the continuity layer will define the next decade of AI infrastructure.
-          </blockquote>
+          <div className="font-[family-name:var(--font-newsreader)] text-[clamp(1.5rem,3.5vw,2.4rem)] leading-[1.45] text-[var(--kl-text)] tracking-[-0.01em] space-y-2">
+            <p>Talk to ChatGPT. Switch to Claude. <strong className="text-[var(--kl-accent)]">It already knows.</strong></p>
+            <p>Switch to Cursor. <strong className="text-[var(--kl-accent)]">It already knows.</strong></p>
+            <p>Come back next week. <strong className="text-[var(--kl-accent)]">It still knows.</strong></p>
+          </div>
+          <p className="font-[family-name:var(--font-lato)] text-[var(--kl-text-muted)] text-[1rem] mt-8 max-w-[560px] mx-auto leading-[1.7]">
+            One local server. Every AI tool shares the same understanding of you, across sessions, across providers, across time.
+          </p>
           <div className="inline-block h-[1px] w-16 bg-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)] mt-10" />
         </div>
       </section>
 
-      {/* ═══════════ 2.5 THE DISTINCTION ═══════════
-          Type 1 retrieval memory vs. Type 2 understanding continuity.
-          Investor-facing differentiation from Mem0 / Rewind / Personal.ai / ChatGPT Memory. */}
-      <section className="py-28 md:py-36 bg-[var(--kl-canvas)]">
+      {/* ═══════════ 3. THE DISTINCTION ═══════════
+          Type 1 retrieval memory vs. Type 2 understanding continuity. */}
+      <section id="what-we-do" className="py-28 md:py-36 bg-[var(--kl-canvas)] scroll-mt-24">
         <div className="mx-auto max-w-[1120px] px-6 md:px-10">
-          <p className="text-[var(--kl-signal)] text-[0.72rem] font-bold tracking-[3px] uppercase font-[family-name:var(--font-lato)] mb-5">
-            The distinction
-          </p>
+          <SectionEyebrow>The distinction</SectionEyebrow>
           <h2 className="font-[family-name:var(--font-fraunces)] text-[clamp(2rem,4.4vw,3.2rem)] leading-[1.14] text-[var(--kl-text)] tracking-[-0.02em] mb-10 max-w-[900px]">
             Other memory products store what you said. Kenotic stores what the AI understood about you while you were saying it.
           </h2>
@@ -162,7 +161,7 @@ export default function Home() {
                 Stores facts. &ldquo;User lives in Michigan. Prefers Python. Has a sister named Mia.&rdquo; When asked, it looks up the fact and injects it into the prompt.
               </p>
               <p className="font-[family-name:var(--font-newsreader)] text-[0.95rem] leading-[1.6] text-[var(--kl-text-soft)] italic">
-                Mem0, Rewind, Personal.ai, ChatGPT Memory, Letta, Zep. A filing cabinet of index cards.
+                Mem0, Rewind, Personal.ai, ChatGPT Memory, Letta, Zep.
               </p>
             </div>
 
@@ -177,60 +176,55 @@ export default function Home() {
                 Stores the AI&rsquo;s evolving perception of you. Not &ldquo;what you said&rdquo; but the arc of the conversation, the thread you were on, the things left unresolved, the working model. Switch to a new AI and it resumes the same understanding.
               </p>
               <p className="font-[family-name:var(--font-newsreader)] text-[0.95rem] leading-[1.6] text-[var(--kl-text-soft)] italic">
-                Kenotic. The impression a long-time friend has of you. Not a diff; the entire working tree.
+                Kenotic.
               </p>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="mt-16 border-t border-[var(--kl-border)] pt-10 max-w-[880px]">
-            <p className="font-[family-name:var(--font-newsreader)] text-[1.05rem] leading-[1.7] text-[var(--kl-text-muted)]">
-              The labs with the capital to build Type 2 are incentivized not to — portable understanding across Claude, GPT, and Gemini is anti-platform-moat for them. The companies building memory today are architecturally committed to fact retrieval. Kenotic sits in the gap, with an architecture designed to encode the structured understanding state itself.
+      {/* ═══════════ 4. WHY PLATFORMS CAN'T BUILD THIS ═══════════
+          The neutral-layer argument from the memo. */}
+      <section className="py-24 md:py-32 border-y border-[var(--kl-border)] bg-[var(--kl-surface)]">
+        <div className="mx-auto max-w-[960px] px-6 md:px-10">
+          <SectionEyebrow>The gap</SectionEyebrow>
+          <h2 className="font-[family-name:var(--font-fraunces)] text-[clamp(2rem,4.4vw,3.2rem)] leading-[1.14] text-[var(--kl-text)] tracking-[-0.02em] mb-10 max-w-[800px]">
+            Why the labs with the capital to build this are incentivized not to.
+          </h2>
+          <div className="space-y-6 font-[family-name:var(--font-newsreader)] text-[clamp(1.1rem,1.8vw,1.3rem)] leading-[1.7] text-[var(--kl-text-muted)] max-w-[780px]">
+            <p>
+              OpenAI will never build something that makes Claude better. Anthropic will never build something that makes GPT better. A cross-host memory layer means supporting your competitor. Their business model will not allow it.
+            </p>
+            <p className="text-[var(--kl-text)] font-semibold font-[family-name:var(--font-lato)] text-[1.05rem]">
+              The neutral layer has to come from outside.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ═══════════ 3. WHY IT MATTERS ═══════════
-          Goethe + Butler + Retrieval vs Continuity framing.
-          The memory-vs-continuity distinction with philosophical weight. */}
-      <WhyItMatters />
-
-      {/* ═══════════ 4. SEVEN PROPERTIES ═══════════
-          The full specification. Derived empirically, formalized in ATANT. */}
-      <section id="properties" className="py-28 md:py-36 bg-[var(--kl-surface)] border-y border-[var(--kl-border)] scroll-mt-24">
+      {/* ═══════════ 5. WHAT WE BUILT ═══════════
+          Concrete architecture facts. No scores. */}
+      <section className="py-28 md:py-36 bg-[var(--kl-canvas)]">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
-          <SectionEyebrow>The specification</SectionEyebrow>
-          <SectionTitle>Seven required properties of continuity.</SectionTitle>
+          <SectionEyebrow>The architecture</SectionEyebrow>
+          <SectionTitle>What we built.</SectionTitle>
           <SectionLede>
-            Derived empirically. Any system claiming continuity must satisfy all seven. A system that satisfies six is something else.
+            Deterministic extraction. No LLM in the loop. Every claim is verifiable.
           </SectionLede>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
-            {[
-              ["Property One", "Persistence Beyond Session", "State survives shutdown, restart, time. The system that ends today is the same system that resumes tomorrow."],
-              ["Property Two", "Update Handling", "When reality changes, the system revises what is true now without erasing the historical record."],
-              ["Property Three", "Temporal Ordering", "The system knows when things happened, in what sequence, and which events are still active versus resolved."],
-              ["Property Four", "Disambiguation", "Distinct narratives stay separate. Two situations with similar people or themes are not collapsed."],
-              ["Property Five", "Reconstruction", "The system answers situation-level questions, not isolated fact lookups. A coherent picture, not a ranked list."],
-              ["Property Six", "Model Independence", "Continuity lives below the intelligence layer. The accumulated understanding belongs to the layer, not the processor."],
-              ["Property Seven", "Operational Usefulness", "The same primitive serves a doctor tracking a patient and a developer tracking a project, without modification."],
-            ].map(([label, title, desc]) => (
-              <div
-                key={title}
-                className="p-8 border border-[var(--kl-border)] bg-[var(--kl-canvas)] hover:border-[var(--kl-signal)] hover:bg-[var(--kl-panel)] transition-all duration-500"
-              >
-                <div className="font-[family-name:var(--font-fraunces)] italic text-[0.82rem] tracking-[0.1em] uppercase text-[var(--kl-signal)] mb-4">{label}</div>
-                <h4 className="font-[family-name:var(--font-fraunces)] text-[1.35rem] font-semibold leading-tight text-[var(--kl-text)] mb-3">{title}</h4>
-                <p className="text-[0.95rem] leading-[1.6] text-[var(--kl-text-muted)]">{desc}</p>
-              </div>
-            ))}
+            <ArchCard title="Deterministic extraction" detail="4,200 lines of grammar rules and spaCy pipelines. No LLM decides what to store. The system knows the exact boundary of what it has." />
+            <ArchCard title="Five structured traces" detail="Every utterance decomposed into episodic, emotional, temporal, relational, and schematic traces. Stored as a single row." />
+            <ArchCard title="Supersession" detail={<>&ldquo;I work at Netflix&rdquo; gets stored. &ldquo;I got a job at Google&rdquo; marks Netflix as historical, Google as current. No LLM deciding what to update.</>} />
+            <ArchCard title="Cross-host via MCP" detail="Works with Claude, GPT, Gemini, Cursor, and everything MCP-compatible. One local server. Install once." />
+            <ArchCard title="Zero marginal cost" detail="spaCy + SQLite + grammar rules. No cloud. No GPU. No per-query cost. Runs on an 8GB machine." />
+            <ArchCard title="The system that says &ldquo;I don&rsquo;t know&rdquo;" detail="Ask about something never stored and every other system gives a confident answer. Kenotic abstains. Deterministic extraction makes that possible." />
           </div>
         </div>
       </section>
 
-      {/* ═══════════ 6. THE WORK, IN PUBLIC ═══════════
-          Dark inverted band. Four receipt cards + the 96% callout.
-          The proof that the specification is met. */}
+      {/* ═══════════ 6. EVIDENCE ═══════════
+          arXiv + GitHub + HuggingFace. No score callout. */}
       <section id="evidence" className="py-28 md:py-36 bg-[var(--kl-text)] text-[var(--kl-canvas)] border-y border-[var(--kl-text)] scroll-mt-24">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <div className="mb-6 flex items-center gap-4 text-[0.7rem] tracking-[0.2em] uppercase text-[var(--kl-signal)] font-semibold">
@@ -241,10 +235,10 @@ export default function Home() {
             The work, in public.
           </h2>
           <p className="font-[family-name:var(--font-newsreader)] italic text-[clamp(1.1rem,2vw,1.35rem)] text-[color:color-mix(in_srgb,var(--kl-canvas)_72%,transparent)] max-w-[700px] mb-16 leading-[1.55]">
-            Every artifact is verifiable. Every number is reproducible. Every benchmark runs without any language model in the evaluation loop.
+            Every artifact is public. Every claim is verifiable. Three arXiv papers, two patent applications, and a working demo — all before raising a dollar.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             <Receipt
               label="Paper v1.0"
               title="ATANT framework, on arXiv"
@@ -282,20 +276,10 @@ export default function Home() {
               href="https://huggingface.co/papers/2604.06710"
             />
           </div>
-
-          <div className="mt-16 p-12 border border-[color:color-mix(in_srgb,var(--kl-canvas)_14%,transparent)] bg-[color:color-mix(in_srgb,var(--kl-signal)_8%,transparent)] text-center">
-            <div className="font-[family-name:var(--font-fraunces)] text-[clamp(3.5rem,9vw,7rem)] leading-none tracking-[-0.02em] font-semibold text-[var(--kl-signal)] mb-5">
-              96<span className="text-[0.45em] text-[color:color-mix(in_srgb,var(--kl-canvas)_55%,transparent)]">%</span>
-            </div>
-            <p className="font-[family-name:var(--font-newsreader)] italic text-[clamp(1.05rem,1.8vw,1.25rem)] text-[color:color-mix(in_srgb,var(--kl-canvas)_85%,transparent)] max-w-[680px] mx-auto leading-[1.5]">
-              on the 250-story cumulative benchmark. 100% in isolated mode. No language model in the evaluation loop. Reproducible on an 8GB GPU.
-            </p>
-          </div>
         </div>
       </section>
 
-      {/* ═══════════ 6. USE CASES ═══════════
-          One primitive. Many applications. */}
+      {/* ═══════════ 7. USE CASES ═══════════ */}
       <section id="use-cases" className="py-28 md:py-36 bg-[var(--kl-surface)] border-y border-[var(--kl-border)] scroll-mt-24">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <SectionEyebrow>The scope</SectionEyebrow>
@@ -321,8 +305,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════ 9. THESIS CTA ═══════════
-          The invitation to the full argument. */}
+      {/* ═══════════ 8. PROVENANCE ═══════════
+          Industrial credentials. Moved up — founder signal before thesis. */}
+      <Provenance />
+
+      {/* ═══════════ 9. THESIS + PUBLICATIONS ═══════════ */}
       <section id="thesis" className="py-32 md:py-40 bg-[var(--kl-panel)] border-y border-[var(--kl-border)] scroll-mt-24">
         <div className="mx-auto max-w-[900px] px-6 md:px-10 text-center">
           <div className="mb-6 flex items-center justify-center gap-4 text-[0.7rem] tracking-[0.2em] uppercase text-[var(--kl-signal)] font-semibold">
@@ -334,7 +321,7 @@ export default function Home() {
             Read the full thesis.
           </h2>
           <p className="font-[family-name:var(--font-newsreader)] italic text-[clamp(1.1rem,2vw,1.35rem)] leading-[1.5] text-[var(--kl-text-muted)] max-w-[720px] mx-auto mb-12">
-            Thirteen sections. Roughly 8,000 words. The canonical worldview document: why continuity is the missing layer, why the physics wall makes it necessary now, and why the pattern traces back to a two-thousand-year-old theological precedent.
+            Thirteen sections. Roughly 8,000 words. Why continuity is the missing layer, why the physics wall makes it necessary now, and what the architecture looks like.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
@@ -378,22 +365,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════ 10. PUBLICATIONS ═══════════
-          Concrete artifacts with their own individual framing.
-          arXiv + GitHub + Thesis essay + Community row. */}
       <Publications />
 
-      {/* ═══════════ 11. VALUES ═══════════
-          Software serves people. Four pillars. What we commit to. */}
+      {/* ═══════════ 10. VALUES ═══════════ */}
       <Values />
 
-      {/* ═══════════ 12. PROVENANCE ═══════════
-          Industrial credentials. Schneider, Continental, Brose, Tenneco, Tata.
-          The moat against "no pedigree." */}
-      <Provenance />
-
-      {/* ═══════════ 13. RESEARCH LAB CLOSE ═══════════
-          Identity statement before the conversion surface. */}
+      {/* ═══════════ 11. ABOUT ═══════════ */}
       <section id="about" className="py-28 md:py-36 bg-[var(--kl-canvas)] scroll-mt-24">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start">
@@ -411,22 +388,17 @@ export default function Home() {
                 The name comes from <em className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)] not-italic font-medium">kenosis</em>, a Greek term for self-pouring without loss of self. The architecture and the name describe the same pattern: a structured state that moves forward into the next moment without losing what it was.
               </p>
               <p>
-                The work is in public. The framework is on arXiv. The benchmark is on GitHub. The reference implementation passes the framework. The corpus is on Hugging Face. The thesis is on arXiv and on this site.
-              </p>
-              <p className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-text)] text-[1.2rem] md:text-[1.3rem] leading-[1.5]">
-                The layer is the company. The model is the processor. The layer is what stays.
+                The work is in public. The framework is on arXiv. The benchmark is on GitHub. The corpus is on Hugging Face. The thesis is on arXiv and on this site.
               </p>
             </div>
           </div>
-
         </div>
       </section>
 
-      {/* ═══════════ 14. CONTACT ═══════════
-          The conversion surface. Dual CTA: partnership + waitlist. */}
+      {/* ═══════════ 12. CONTACT ═══════════ */}
       <Contact />
 
-      {/* ═══════════ 15. FOOTER ═══════════ */}
+      {/* ═══════════ 13. FOOTER ═══════════ */}
       <Footer />
     </motion.main>
   );
@@ -510,6 +482,21 @@ function UseCase({
         {title}
       </h4>
       <p className="text-[var(--kl-text-muted)] leading-[1.65] text-[1rem]">{children}</p>
+    </div>
+  );
+}
+
+function ArchCard({
+  title,
+  detail,
+}: {
+  title: string;
+  detail: React.ReactNode;
+}) {
+  return (
+    <div className="p-8 border border-[var(--kl-border)] bg-[var(--kl-surface)] hover:border-[var(--kl-signal)] hover:bg-[var(--kl-panel)] transition-all duration-500">
+      <h4 className="font-[family-name:var(--font-fraunces)] text-[1.3rem] font-semibold leading-tight text-[var(--kl-text)] mb-3">{title}</h4>
+      <p className="text-[0.95rem] leading-[1.6] text-[var(--kl-text-muted)]">{detail}</p>
     </div>
   );
 }

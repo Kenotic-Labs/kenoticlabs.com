@@ -1,12 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { SectionOverlay } from "@/components/section-overlay";
 
 export function Hero() {
-  const line1 = "We gave machines intelligence.".split(" ");
-  const line2 = "We never gave them time.".split(" ");
-
   const ease = [0.22, 1, 0.36, 1] as const;
 
   return (
@@ -20,146 +18,105 @@ export function Hero() {
       <SectionOverlay variant="hero" />
       <div className="relative z-10 w-full max-w-[1180px] mx-auto px-8 md:px-16 pt-36 md:pt-40 pb-24 lg:pb-28">
         <div className="max-w-[860px]">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.9, ease }}
-              className="flex flex-wrap items-center gap-2 mb-8"
+          {/* arXiv badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.9, ease }}
+            className="flex flex-wrap items-center gap-2 mb-8"
+          >
+            <a
+              href="https://arxiv.org/abs/2604.10981"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[color:color-mix(in_srgb,var(--kl-accent)_22%,transparent)] bg-white/60 backdrop-blur-sm hover:border-[color:color-mix(in_srgb,var(--kl-accent)_45%,transparent)] hover:bg-white/80 transition-all duration-500"
             >
-              <a
-                href="https://arxiv.org/abs/2604.10981"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[color:color-mix(in_srgb,var(--kl-accent)_22%,transparent)] bg-white/60 backdrop-blur-sm hover:border-[color:color-mix(in_srgb,var(--kl-accent)_45%,transparent)] hover:bg-white/80 transition-all duration-500"
-              >
-                <span className="relative flex h-[7px] w-[7px]">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--kl-accent)] opacity-60" />
-                  <span className="relative inline-flex h-[7px] w-[7px] rounded-full bg-[var(--kl-accent)]" />
-                </span>
-                <span className="font-[family-name:var(--font-lato)] text-[0.65rem] font-bold tracking-[2.4px] uppercase text-[var(--kl-text)]">
-                  New &middot; April 13, 2026
-                </span>
-                <span className="font-[family-name:var(--font-lato)] text-[0.72rem] text-[var(--kl-text-muted)] group-hover:text-[var(--kl-text)] transition-colors duration-500">
-                  ATANT v1.1: Positioning Continuity Evaluation &middot; arXiv:2604.10981 &rarr;
-                </span>
-              </a>
-              <a
-                href="https://arxiv.org/abs/2604.06710"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[color:color-mix(in_srgb,var(--kl-accent)_16%,transparent)] bg-white/40 backdrop-blur-sm hover:border-[color:color-mix(in_srgb,var(--kl-accent)_38%,transparent)] hover:bg-white/70 transition-all duration-500"
-              >
-                <span className="inline-flex h-[7px] w-[7px] rounded-full bg-[color:color-mix(in_srgb,var(--kl-accent)_55%,transparent)]" />
-                <span className="font-[family-name:var(--font-lato)] text-[0.65rem] font-bold tracking-[2.4px] uppercase text-[var(--kl-text-muted)]">
-                  v1.0 &middot; April 8, 2026
-                </span>
-                <span className="font-[family-name:var(--font-lato)] text-[0.72rem] text-[var(--kl-text-muted)] group-hover:text-[var(--kl-text)] transition-colors duration-500">
-                  ATANT: An Evaluation Framework for AI Continuity &middot; arXiv:2604.06710 &rarr;
-                </span>
-              </a>
-            </motion.div>
-            <h1
-              aria-label="We gave machines intelligence. We never gave them time."
-              className="font-[family-name:var(--font-playfair)] text-[clamp(3.4rem,6vw,5.8rem)] font-bold text-[var(--kl-text)] leading-[1.02] tracking-[-1.8px] mb-0"
-            >
-              <span className="block mb-3">
-                {line1.map((word, i) => (
-                  <motion.span
-                    key={`a-${i}`}
-                    initial={{ opacity: 0, y: 35 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: 0.3 + i * 0.12,
-                      duration: 1,
-                      ease,
-                    }}
-                    className="inline-block mr-[0.28em]"
-                  >
-                    {word}
-                  </motion.span>
-                ))}
+              <span className="relative flex h-[7px] w-[7px]">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--kl-accent)] opacity-60" />
+                <span className="relative inline-flex h-[7px] w-[7px] rounded-full bg-[var(--kl-accent)]" />
               </span>
-              <span className="block">
-                {line2.map((word, i) => (
-                  <motion.span
-                    key={`b-${i}`}
-                    initial={{ opacity: 0, y: 35 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: 0.9 + i * 0.12,
-                      duration: 1,
-                      ease,
-                    }}
-                    className="inline-block mr-[0.28em]"
-                  >
-                    {word}
-                  </motion.span>
-                ))}
+              <span className="font-[family-name:var(--font-lato)] text-[0.65rem] font-bold tracking-[2.4px] uppercase text-[var(--kl-text)]">
+                New &middot; April 13, 2026
               </span>
-            </h1>
+              <span className="font-[family-name:var(--font-lato)] text-[0.72rem] text-[var(--kl-text-muted)] group-hover:text-[var(--kl-text)] transition-colors duration-500">
+                ATANT v1.1: Positioning Continuity Evaluation &middot; arXiv:2604.10981 &rarr;
+              </span>
+            </a>
+          </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.6, duration: 1, ease }}
-              className="font-[family-name:var(--font-playfair)] text-[clamp(1.1rem,2vw,1.45rem)] text-[var(--kl-text-muted)] italic leading-relaxed mt-8 mb-10 max-w-[560px]"
+          {/* Main headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 35 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 1, ease }}
+            aria-label="A $50,000 factory robot resumes from exact state after power loss. The most advanced AI on the planet forgets everything when you close the tab."
+            className="font-[family-name:var(--font-playfair)] text-[clamp(2.6rem,5.2vw,4.6rem)] font-bold text-[var(--kl-text)] leading-[1.06] tracking-[-1.5px] mb-0"
+          >
+            <span className="block mb-3">
+              A $50,000 factory robot resumes from exact state after power loss.
+            </span>
+            <span className="block text-[var(--kl-text-muted)]">
+              The most advanced AI on the planet forgets everything when you close the tab.
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 1, ease }}
+            className="font-[family-name:var(--font-lato)] text-[var(--kl-text)] text-lg md:text-xl font-semibold leading-[1.6] mt-10 mb-4 max-w-[600px]"
+          >
+            We built the fix.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 1, ease }}
+            className="font-[family-name:var(--font-lato)] text-[var(--kl-text-muted)] text-[1.05rem] md:text-lg leading-[1.9] mb-10 max-w-[600px]"
+          >
+            No LLM. No cloud. No cost per query. Deterministic extraction that knows the exact boundary of what it has. Your data stays on your machine.
+          </motion.p>
+
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 1.5, duration: 1, ease }}
+            className="origin-left mb-10"
+            style={{
+              width: "100%",
+              maxWidth: "220px",
+              height: "1px",
+              background:
+                "linear-gradient(to right, var(--kl-accent), color-mix(in srgb, var(--kl-accent) 30%, transparent), transparent)",
+            }}
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.8, duration: 1, ease }}
+            className="flex flex-wrap items-center gap-4"
+          >
+            <Link
+              href="/demo"
+              className="inline-flex items-center gap-3 px-7 py-4 bg-[var(--kl-text)] text-[var(--kl-canvas)] text-[0.82rem] tracking-[0.14em] uppercase font-semibold border border-[var(--kl-text)] hover:bg-transparent hover:text-[var(--kl-text)] transition-all duration-500"
             >
-              What if intelligence was never the hard part?
-            </motion.p>
-
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 2, duration: 1, ease }}
-              className="origin-left mb-10"
-              style={{
-                width: "100%",
-                maxWidth: "220px",
-                height: "1px",
-                background:
-                  "linear-gradient(to right, var(--kl-accent), color-mix(in srgb, var(--kl-accent) 30%, transparent), transparent)",
-              }}
-            />
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.3, duration: 1, ease }}
-              className="max-w-[620px]"
+              See the demo
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-3 h-3">
+                <path d="M1 7h12M7 1l6 6-6 6" />
+              </svg>
+            </Link>
+            <Link
+              href="/thesis"
+              className="inline-flex items-center gap-3 px-7 py-4 bg-transparent text-[var(--kl-text)] text-[0.82rem] tracking-[0.14em] uppercase font-semibold border border-[var(--kl-text)] hover:bg-[var(--kl-text)] hover:text-[var(--kl-canvas)] transition-all duration-500"
             >
-              <p className="font-[family-name:var(--font-lato)] text-[var(--kl-text-muted)] text-[1.05rem] md:text-lg leading-[1.9] mb-8">
-                The hard part is continuity. Preserving the living state of what
-                still matters, updating it when reality changes, and keeping
-                intelligence oriented across time.
-              </p>
-              <p className="font-[family-name:var(--font-lato)] text-[var(--kl-text-muted)] text-[1.02rem] md:text-[1.08rem] leading-[1.9] mb-8">
-                If that layer exists, the center of gravity in AI shifts.
-                Models still matter. But the durable value begins to move toward
-                the system that can carry forward understanding across people,
-                projects, institutions, and years.
-              </p>
-              <p className="font-[family-name:var(--font-lato)] text-[var(--kl-text)] text-lg md:text-xl font-semibold leading-[1.6]">
-                That is the direction Kenotic is building toward.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.65, duration: 1, ease }}
-              className="mt-14 max-w-[700px] rounded-[1.5rem] border border-[color:color-mix(in_srgb,var(--kl-accent)_12%,transparent)] bg-white/70 px-8 py-8 backdrop-blur-sm"
-            >
-              <p className="font-[family-name:var(--font-playfair)] text-[clamp(1.2rem,2vw,1.5rem)] italic text-[var(--kl-text)] leading-[1.5] mb-5">
-                What begins to happen when intelligence no longer starts over?
-              </p>
-              <p className="font-[family-name:var(--font-lato)] text-[var(--kl-text-muted)] text-[1rem] md:text-[1.04rem] leading-[1.9]">
-                Machines begin to understand why something matters, when action
-                should happen, and what should happen next without being
-                re-instructed from zero every time. In software, that changes
-                how systems work. In hardware, it changes what systems can
-                become.
-              </p>
-            </motion.div>
+              Read the thesis
+              <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-3 h-3">
+                <path d="M1 7h12M7 1l6 6-6 6" />
+              </svg>
+            </Link>
+          </motion.div>
         </div>
       </div>
 
