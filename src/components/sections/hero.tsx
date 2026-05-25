@@ -75,7 +75,7 @@ export function Hero() {
             transition={{ delay: 1.2, duration: 1, ease }}
             className="font-[family-name:var(--font-lato)] text-[var(--kl-text-muted)] text-[1.05rem] md:text-lg leading-[1.9] mb-10 max-w-[600px]"
           >
-            No LLM. No cloud. No cost per query. Deterministic extraction that knows the exact boundary of what it has. Your data stays on your machine.
+            No LLM in the loop. No cloud. Zero cost per query. The system extracts deterministically and knows the exact boundary of what it has. Your data never leaves your machine.
           </motion.p>
 
           <motion.div

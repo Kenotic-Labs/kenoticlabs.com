@@ -14,15 +14,15 @@ const clients = [
 const lineage = [
   {
     label: "Hardware",
-    body: "Three years designing industrial automation systems. $1.5M of production machinery shipped to Fortune 500 manufacturers. The systems that build iPhone bodies and Tesla components. 24/7 factory operation. Zero-downtime requirement.",
+    body: "Three years designing industrial automation systems. $1.5M of production machinery shipped to Fortune 500 manufacturers. The machines build iPhone bodies and Tesla components. They run 24/7. Downtime is not an option.",
   },
   {
     label: "Determinism",
-    body: "Industrial controllers (PLCs) hold persistent state across power cycles, restarts, and shift changes. They are deterministic by construction. The continuity layer is the same idea, applied one stack higher.",
+    body: "Industrial controllers hold persistent state across power cycles, restarts, and shift changes. They are deterministic by construction. The continuity layer is the same idea, one stack higher.",
   },
   {
     label: "Full stack",
-    body: "Mechatronics. Electronics & Computer Engineering. Information Systems (M.S., Central Michigan University). Silicon, board, firmware, software, and the manufacturing process underneath all of it.",
+    body: "Mechatronics. Electronics and Computer Engineering. Information Systems (M.S., Central Michigan University). Silicon, board, firmware, software, and the manufacturing process underneath all of it.",
   },
 ];
 
@@ -54,16 +54,16 @@ export function Provenance() {
             <Reveal delay={0.18}>
               <p className="text-[#6B6B6B] text-[1.05rem] leading-[1.85] mb-6 max-w-[520px]">
                 Most AI infrastructure is designed by people who have never had to
-                make something hold state across a power cycle. The continuity
-                problem looks invisible from inside a Jupyter notebook. From inside
-                a factory, it is the first problem you solve.
+                keep something running through a power cycle. The continuity
+                problem is invisible from inside a Jupyter notebook. From inside
+                a factory, it is the first thing you solve.
               </p>
             </Reveal>
             <Reveal delay={0.24}>
               <p className="text-[#6B6B6B] text-[1.05rem] leading-[1.85] max-w-[520px]">
                 The roadmap ends in silicon. A continuity node that any device
-                can integrate. The lineage that gets it there starts on the
-                floor of a manufacturing line.
+                can integrate. The path there starts on the floor of a
+                manufacturing line.
               </p>
             </Reveal>
           </div>

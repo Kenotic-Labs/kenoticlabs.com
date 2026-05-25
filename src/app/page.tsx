@@ -131,7 +131,7 @@ export default function Home() {
             <p>Come back next week. <strong className="text-[var(--kl-accent)]">It still knows.</strong></p>
           </div>
           <p className="font-[family-name:var(--font-lato)] text-[var(--kl-text-muted)] text-[1rem] mt-8 max-w-[560px] mx-auto leading-[1.7]">
-            One local server. Every AI tool shares the same understanding of you, across sessions, across providers, across time.
+            One local server. Every AI tool shares the same understanding of you. Across sessions. Across providers. Across time.
           </p>
           <div className="inline-block h-[1px] w-16 bg-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)] mt-10" />
         </div>
@@ -146,7 +146,7 @@ export default function Home() {
             Other memory products store what you said. Kenotic stores what the AI understood about you while you were saying it.
           </h2>
           <p className="font-[family-name:var(--font-newsreader)] text-[clamp(1.05rem,1.5vw,1.2rem)] leading-[1.6] text-[var(--kl-text-muted)] max-w-[820px] mb-16">
-            Two categories get called &ldquo;memory.&rdquo; They are not the same primitive.
+            Two categories get called &ldquo;memory.&rdquo; They are not the same thing.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
@@ -173,7 +173,7 @@ export default function Home() {
                 What the AI understood about you.
               </h3>
               <p className="font-[family-name:var(--font-newsreader)] text-[1rem] leading-[1.65] text-[var(--kl-text-muted)] mb-5">
-                Stores the AI&rsquo;s evolving perception of you. Not &ldquo;what you said&rdquo; but the arc of the conversation, the thread you were on, the things left unresolved, the working model. Switch to a new AI and it resumes the same understanding.
+                Stores the AI&rsquo;s evolving understanding of you. Not the words you said, but the thread you were on, the things left unresolved, the working model it was building. Switch to a new AI and it picks up where the last one left off.
               </p>
               <p className="font-[family-name:var(--font-newsreader)] text-[0.95rem] leading-[1.6] text-[var(--kl-text-soft)] italic">
                 Kenotic.
@@ -193,7 +193,7 @@ export default function Home() {
           </h2>
           <div className="space-y-6 font-[family-name:var(--font-newsreader)] text-[clamp(1.1rem,1.8vw,1.3rem)] leading-[1.7] text-[var(--kl-text-muted)] max-w-[780px]">
             <p>
-              OpenAI will never build something that makes Claude better. Anthropic will never build something that makes GPT better. A cross-host memory layer means supporting your competitor. Their business model will not allow it.
+              OpenAI will never build something that makes Claude better. Anthropic will never build something that makes GPT better. A cross-host memory layer means helping your competitor. Their business models will not allow it.
             </p>
             <p className="text-[var(--kl-text)] font-semibold font-[family-name:var(--font-lato)] text-[1.05rem]">
               The neutral layer has to come from outside.
@@ -209,16 +209,16 @@ export default function Home() {
           <SectionEyebrow>The architecture</SectionEyebrow>
           <SectionTitle>What we built.</SectionTitle>
           <SectionLede>
-            Deterministic extraction. No LLM in the loop. Every claim is verifiable.
+            Deterministic extraction. No LLM in the loop. Everything here is verifiable.
           </SectionLede>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
             <ArchCard title="Deterministic extraction" detail="4,200 lines of grammar rules and spaCy pipelines. No LLM decides what to store. The system knows the exact boundary of what it has." />
-            <ArchCard title="Five structured traces" detail="Every utterance decomposed into episodic, emotional, temporal, relational, and schematic traces. Stored as a single row." />
+            <ArchCard title="Five structured traces" detail="Every utterance gets decomposed into five trace types: episodic, emotional, temporal, relational, and schematic. All stored as a single row." />
             <ArchCard title="Supersession" detail={<>&ldquo;I work at Netflix&rdquo; gets stored. &ldquo;I got a job at Google&rdquo; marks Netflix as historical, Google as current. No LLM deciding what to update.</>} />
             <ArchCard title="Cross-host via MCP" detail="Works with Claude, GPT, Gemini, Cursor, and everything MCP-compatible. One local server. Install once." />
             <ArchCard title="Zero marginal cost" detail="spaCy + SQLite + grammar rules. No cloud. No GPU. No per-query cost. Runs on an 8GB machine." />
-            <ArchCard title="The system that says &ldquo;I don&rsquo;t know&rdquo;" detail="Ask about something never stored and every other system gives a confident answer. Kenotic abstains. Deterministic extraction makes that possible." />
+            <ArchCard title="The system that says &ldquo;I don&rsquo;t know&rdquo;" detail="Ask about something that was never stored. Every other system gives you a confident answer anyway. Kenotic abstains, because deterministic extraction knows what is and is not there." />
           </div>
         </div>
       </section>
@@ -235,7 +235,7 @@ export default function Home() {
             The work, in public.
           </h2>
           <p className="font-[family-name:var(--font-newsreader)] italic text-[clamp(1.1rem,2vw,1.35rem)] text-[color:color-mix(in_srgb,var(--kl-canvas)_72%,transparent)] max-w-[700px] mb-16 leading-[1.55]">
-            Every artifact is public. Every claim is verifiable. Three arXiv papers, two patent applications, and a working demo — all before raising a dollar.
+            Three arXiv papers, two patent applications, and a working demo. All public. All before raising a dollar.
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -285,7 +285,7 @@ export default function Home() {
           <SectionEyebrow>The scope</SectionEyebrow>
           <SectionTitle>One primitive. Many applications.</SectionTitle>
           <SectionLede>
-            Anything that has to act in context, against history, without being told step by step, needs the same layer underneath.
+            Anything that has to act in context, against history, without being told what to do step by step. They all need the same layer underneath.
           </SectionLede>
 
           <div className="grid md:grid-cols-2 gap-5 mt-12">
@@ -321,7 +321,7 @@ export default function Home() {
             Read the full thesis.
           </h2>
           <p className="font-[family-name:var(--font-newsreader)] italic text-[clamp(1.1rem,2vw,1.35rem)] leading-[1.5] text-[var(--kl-text-muted)] max-w-[720px] mx-auto mb-12">
-            Thirteen sections. Roughly 8,000 words. Why continuity is the missing layer, why the physics wall makes it necessary now, and what the architecture looks like.
+            Thirteen sections. Roughly 8,000 words. Why continuity is the missing layer, why the scaling wall makes it necessary now, and what the architecture looks like.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
@@ -382,7 +382,7 @@ export default function Home() {
             </div>
             <div className="space-y-6 font-[family-name:var(--font-source-serif)] text-[1.1rem] md:text-[1.15rem] leading-[1.7] text-[var(--kl-text-muted)]">
               <p>
-                <strong className="text-[var(--kl-text)]">Kenotic Labs is an AI infrastructure company building the continuity layer for AI</strong> — infrastructure that preserves and reconstructs the living state of a situation across time. Founded in 2025 by <strong className="text-[var(--kl-text)]">Samuel Sameer Tanguturi</strong>. Based in Michigan, USA. Core architecture: DTCM (Decomposed Trace Convergence Memory). Validated by the ATANT evaluation framework (arXiv:2604.06710, arXiv:2604.10981). Thesis: arXiv:2604.17273.
+                <strong className="text-[var(--kl-text)]">Kenotic Labs is an AI infrastructure company building the continuity layer for AI.</strong> Infrastructure that preserves and reconstructs the living state of a situation across time. Founded in 2025 by <strong className="text-[var(--kl-text)]">Samuel Sameer Tanguturi</strong>. Based in Michigan, USA. Core architecture: DTCM (Decomposed Trace Convergence Memory). Validated by the ATANT evaluation framework (arXiv:2604.06710, arXiv:2604.10981). Thesis: arXiv:2604.17273.
               </p>
               <p>
                 The name comes from <em className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)] not-italic font-medium">kenosis</em>, a Greek term for self-pouring without loss of self. The architecture and the name describe the same pattern: a structured state that moves forward into the next moment without losing what it was.
