@@ -122,7 +122,7 @@ export default function Home() {
 
       {/* ═══════════ 2. WHAT IT DOES ═══════════
           The product in four lines. ChatGPT → Claude → Cursor → next week. */}
-      <section id="vision" className="py-24 md:py-32 border-y border-[var(--kl-border)] bg-[var(--kl-surface)] scroll-mt-24">
+      <section id="vision" className="py-14 md:py-24 lg:py-32 border-y border-[var(--kl-border)] bg-[var(--kl-surface)] scroll-mt-24">
         <div className="mx-auto max-w-[960px] px-6 md:px-10 text-center">
           <div className="inline-block h-[1px] w-16 bg-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)] mb-10" />
           <div className="font-[family-name:var(--font-newsreader)] text-[clamp(1.5rem,3.5vw,2.4rem)] leading-[1.45] text-[var(--kl-text)] tracking-[-0.01em] space-y-2">
@@ -139,7 +139,7 @@ export default function Home() {
 
       {/* ═══════════ 3. THE DISTINCTION ═══════════
           Type 1 retrieval memory vs. Type 2 understanding continuity. */}
-      <section id="what-we-do" className="py-28 md:py-36 bg-[var(--kl-canvas)] scroll-mt-24">
+      <section id="what-we-do" className="py-16 md:py-28 lg:py-36 bg-[var(--kl-canvas)] scroll-mt-24">
         <div className="mx-auto max-w-[1120px] px-6 md:px-10">
           <SectionEyebrow>The distinction</SectionEyebrow>
           <h2 className="font-[family-name:var(--font-fraunces)] text-[clamp(2rem,4.4vw,3.2rem)] leading-[1.14] text-[var(--kl-text)] tracking-[-0.02em] mb-10 max-w-[900px]">
@@ -185,7 +185,7 @@ export default function Home() {
 
       {/* ═══════════ 4. WHY PLATFORMS CAN'T BUILD THIS ═══════════
           The neutral-layer argument from the memo. */}
-      <section className="py-24 md:py-32 border-y border-[var(--kl-border)] bg-[var(--kl-surface)]">
+      <section className="py-14 md:py-24 lg:py-32 border-y border-[var(--kl-border)] bg-[var(--kl-surface)]">
         <div className="mx-auto max-w-[960px] px-6 md:px-10">
           <SectionEyebrow>The gap</SectionEyebrow>
           <h2 className="font-[family-name:var(--font-fraunces)] text-[clamp(2rem,4.4vw,3.2rem)] leading-[1.14] text-[var(--kl-text)] tracking-[-0.02em] mb-10 max-w-[800px]">
@@ -204,7 +204,7 @@ export default function Home() {
 
       {/* ═══════════ 5. WHAT WE BUILT ═══════════
           Concrete architecture facts. No scores. */}
-      <section className="py-28 md:py-36 bg-[var(--kl-canvas)]">
+      <section className="py-16 md:py-28 lg:py-36 bg-[var(--kl-canvas)]">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <SectionEyebrow>The architecture</SectionEyebrow>
           <SectionTitle>What we built.</SectionTitle>
@@ -225,7 +225,7 @@ export default function Home() {
 
       {/* ═══════════ 6. EVIDENCE ═══════════
           arXiv + GitHub + HuggingFace. No score callout. */}
-      <section id="evidence" className="py-28 md:py-36 bg-[var(--kl-text)] text-[var(--kl-canvas)] border-y border-[var(--kl-text)] scroll-mt-24">
+      <section id="evidence" className="py-16 md:py-28 lg:py-36 bg-[var(--kl-text)] text-[var(--kl-canvas)] border-y border-[var(--kl-text)] scroll-mt-24">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <div className="mb-6 flex items-center gap-4 text-[0.7rem] tracking-[0.2em] uppercase text-[var(--kl-signal)] font-semibold">
             <span className="h-[1px] w-10 bg-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)]" />
@@ -280,7 +280,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════ 7. USE CASES ═══════════ */}
-      <section id="use-cases" className="py-28 md:py-36 bg-[var(--kl-surface)] border-y border-[var(--kl-border)] scroll-mt-24">
+      <section id="use-cases" className="py-16 md:py-28 lg:py-36 bg-[var(--kl-surface)] border-y border-[var(--kl-border)] scroll-mt-24">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <SectionEyebrow>The scope</SectionEyebrow>
           <SectionTitle>One primitive. Many applications.</SectionTitle>
@@ -310,7 +310,7 @@ export default function Home() {
       <Provenance />
 
       {/* ═══════════ 9. THESIS + PUBLICATIONS ═══════════ */}
-      <section id="thesis" className="py-32 md:py-40 bg-[var(--kl-panel)] border-y border-[var(--kl-border)] scroll-mt-24">
+      <section id="thesis" className="py-16 md:py-32 lg:py-40 bg-[var(--kl-panel)] border-y border-[var(--kl-border)] scroll-mt-24">
         <div className="mx-auto max-w-[900px] px-6 md:px-10 text-center">
           <div className="mb-6 flex items-center justify-center gap-4 text-[0.7rem] tracking-[0.2em] uppercase text-[var(--kl-signal)] font-semibold">
             <span className="h-[1px] w-10 bg-[color:color-mix(in_srgb,var(--kl-signal)_60%,transparent)]" />
@@ -371,7 +371,7 @@ export default function Home() {
       <Values />
 
       {/* ═══════════ 11. ABOUT ═══════════ */}
-      <section id="about" className="py-28 md:py-36 bg-[var(--kl-canvas)] scroll-mt-24">
+      <section id="about" className="py-16 md:py-28 lg:py-36 bg-[var(--kl-canvas)] scroll-mt-24">
         <div className="mx-auto max-w-[1200px] px-6 md:px-10">
           <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start">
             <div>

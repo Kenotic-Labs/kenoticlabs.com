@@ -181,7 +181,7 @@ export function Contact() {
     <section id="contact" className="relative grid grid-cols-1 lg:grid-cols-2 overflow-hidden scroll-mt-24">
       <SectionOverlay variant="split" />
 
-      <div className="bg-[#F5F3EE] px-8 md:px-16 lg:px-20 py-24 lg:py-32 flex flex-col justify-center">
+      <div className="bg-[#F5F3EE] px-6 md:px-16 lg:px-20 py-14 md:py-20 lg:py-32 flex flex-col justify-center">
         <Reveal>
           <h2 className="font-[family-name:var(--font-playfair)] text-[clamp(2rem,3vw,2.4rem)] font-bold text-[#1A1A1A] mb-4">
             Let&apos;s talk.
@@ -307,7 +307,7 @@ export function Contact() {
         </Reveal>
       </div>
 
-      <div className="bg-[#FAFAF8] px-8 md:px-16 lg:px-20 py-24 lg:py-32 flex flex-col justify-center">
+      <div className="bg-[#FAFAF8] px-6 md:px-16 lg:px-20 py-14 md:py-20 lg:py-32 flex flex-col justify-center">
         <Reveal delay={0.1}>
           <h2 className="font-[family-name:var(--font-playfair)] text-[clamp(2rem,3vw,2.4rem)] font-bold text-[#1A1A1A] mb-4">
             Join the waitlist.

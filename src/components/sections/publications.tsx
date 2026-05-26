@@ -6,7 +6,7 @@ import { SectionOverlay } from "@/components/section-overlay";
 
 export function Publications() {
   return (
-    <section className="relative bg-[#FAFAF8] px-8 md:px-16 lg:px-20 py-24 lg:py-32">
+    <section className="relative bg-[#FAFAF8] px-6 md:px-16 lg:px-20 py-14 md:py-24 lg:py-32">
       <SectionOverlay variant="left" />
       <div className="max-w-[1100px] mx-auto">
         <Reveal>
@@ -111,21 +111,29 @@ export function Publications() {
         {/* Thesis essay link */}
         <Reveal delay={0.25}>
           <Link
-            href="/insights/why-continuity-becomes-the-layer"
+            href="/thesis"
             className="block mb-10 p-6 bg-white rounded-lg border-l-[3px] border-l-[#1A1A1A] shadow-[0_1px_3px_rgba(0,0,0,0.06)]
               hover:shadow-[0_4px_18px_rgba(0,0,0,0.08)] hover:-translate-y-[2px]
               transition-all duration-[1s] ease-[cubic-bezier(0.22,1,0.36,1)] group"
           >
-            <span className="text-[#B39B5C] text-[0.6rem] font-bold tracking-[3px] uppercase font-[family-name:var(--font-lato)]">
-              Thesis &middot; Long Read
-            </span>
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="text-[#B39B5C] text-[0.6rem] font-bold tracking-[3px] uppercase font-[family-name:var(--font-lato)]">
+                Thesis &middot; arXiv cs.AI
+              </span>
+              <span className="text-[#2D6A4F] text-[0.58rem] font-bold tracking-[2.4px] uppercase font-[family-name:var(--font-lato)] px-2 py-[2px] border border-[#2D6A4F]/40 rounded-full">
+                New &middot; April 2026
+              </span>
+            </div>
             <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-[#1A1A1A] mt-3 mb-2 group-hover:text-[#2D6A4F] transition-colors duration-700">
-              Why Continuity Becomes The Layer
+              The Continuity Layer: Why Intelligence Needs an Architecture for What It Carries Forward
             </h3>
-            <p className="text-[#6B6B6B] text-sm leading-relaxed">
+            <p className="text-[#6B6B6B] text-sm leading-relaxed mb-3">
               The argument for why the durable value in AI infrastructure is moving
               from the weights to the layer underneath them. The four-layer arc.
-              Why now. Read the thesis &rarr;
+              Why now.
+            </p>
+            <p className="text-[#6B6B6B] text-xs font-[family-name:var(--font-lato)]">
+              Samuel Sameer Tanguturi &middot; arXiv:2604.17273 &rarr;
             </p>
           </Link>
         </Reveal>

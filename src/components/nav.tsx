@@ -3,21 +3,56 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
   const sectionHref = (id: string) => (isHome ? `#${id}` : `/#${id}`);
   const navTextClass =
     "text-[0.68rem] font-bold tracking-[0.16em] uppercase text-[color:color-mix(in_srgb,var(--kl-text)_74%,transparent)] hover:text-[var(--kl-text)] transition-colors duration-500";
 
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 100);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 100);
+      if (menuOpen) closeMenu();
+    };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [menuOpen, closeMenu]);
+
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  const sectionLinks = [
+    { label: "What We Do", href: sectionHref("what-we-do") },
+    { label: "Vision", href: sectionHref("vision") },
+    { label: "Values", href: sectionHref("values") },
+    { label: "Evidence", href: sectionHref("evidence") },
+    { label: "Contact", href: sectionHref("contact") },
+  ];
+
+  const pageLinks = [
+    { label: "Thesis", href: "/thesis" },
+    { label: "Insights", href: "/insights" },
+  ];
+
+  const mobileNavTextClass =
+    "text-[0.85rem] font-bold tracking-[0.12em] uppercase font-[family-name:var(--font-lato)] text-[color:color-mix(in_srgb,var(--kl-text)_74%,transparent)] hover:text-[var(--kl-text)] transition-colors duration-300";
 
   return (
     <nav
@@ -47,6 +82,8 @@ export function Nav() {
             Kenotic Labs
           </span>
         </Link>
+
+        {/* Desktop nav */}
         <div className="hidden md:flex gap-8 items-center">
           {["What We Do", "Vision", "Values", "Evidence", "Contact"].map((item) => (
             <Link
@@ -76,7 +113,99 @@ export function Nav() {
             Demo
           </Link>
         </div>
+
+        {/* Mobile hamburger button */}
+        <button
+          className="md:hidden relative w-8 h-8 flex items-center justify-center z-[210]"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+        >
+          <span className="relative w-6 h-5 flex flex-col justify-between">
+            <span
+              className={`block h-[2px] w-full bg-[var(--kl-text)] transition-all duration-300 origin-center ${
+                menuOpen ? "translate-y-[9px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`block h-[2px] w-full bg-[var(--kl-text)] transition-all duration-300 ${
+                menuOpen ? "opacity-0 scale-x-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`block h-[2px] w-full bg-[var(--kl-text)] transition-all duration-300 origin-center ${
+                menuOpen ? "-translate-y-[9px] -rotate-45" : ""
+              }`}
+            />
+          </span>
+        </button>
       </div>
+
+      {/* Mobile menu overlay */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ y: "-100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="md:hidden fixed inset-0 z-[200] bg-[var(--kl-canvas)]"
+          >
+            <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-8 pt-20">
+              {sectionLinks.map((link, i) => (
+                <motion.div
+                  key={link.label}
+                  initial={{ opacity: 0, y: -12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.08 + i * 0.04, duration: 0.3 }}
+                >
+                  <Link
+                    href={link.href}
+                    className={mobileNavTextClass}
+                    onClick={closeMenu}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+
+              <span className="block w-12 h-[1px] bg-[color:color-mix(in_srgb,var(--kl-text)_12%,transparent)] my-1" />
+
+              {pageLinks.map((link, i) => (
+                <motion.div
+                  key={link.label}
+                  initial={{ opacity: 0, y: -12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.28 + i * 0.04, duration: 0.3 }}
+                >
+                  <Link
+                    href={link.href}
+                    className={mobileNavTextClass}
+                    onClick={closeMenu}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+
+              <motion.div
+                initial={{ opacity: 0, y: -12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.38, duration: 0.3 }}
+                className="mt-2"
+              >
+                <Link
+                  href="/demo"
+                  className="inline-block text-[0.85rem] font-bold tracking-[0.12em] uppercase font-[family-name:var(--font-lato)] text-[var(--kl-canvas)] bg-[var(--kl-accent)] px-8 py-3.5 hover:opacity-90 transition-opacity duration-300"
+                  onClick={closeMenu}
+                >
+                  Demo
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

@@ -16,7 +16,7 @@ export function Hero() {
       }}
     >
       <SectionOverlay variant="hero" />
-      <div className="relative z-10 w-full max-w-[1180px] mx-auto px-8 md:px-16 pt-36 md:pt-40 pb-24 lg:pb-28">
+      <div className="relative z-10 w-full max-w-[1180px] mx-auto px-6 md:px-16 pt-28 md:pt-36 lg:pt-40 pb-16 md:pb-24 lg:pb-28">
         <div className="max-w-[860px]">
           {/* arXiv badges */}
           <motion.div
@@ -38,8 +38,11 @@ export function Hero() {
               <span className="font-[family-name:var(--font-lato)] text-[0.65rem] font-bold tracking-[2.4px] uppercase text-[var(--kl-text)]">
                 New &middot; April 13, 2026
               </span>
-              <span className="font-[family-name:var(--font-lato)] text-[0.72rem] text-[var(--kl-text-muted)] group-hover:text-[var(--kl-text)] transition-colors duration-500">
+              <span className="hidden sm:inline font-[family-name:var(--font-lato)] text-[0.72rem] text-[var(--kl-text-muted)] group-hover:text-[var(--kl-text)] transition-colors duration-500">
                 ATANT v1.1: Positioning Continuity Evaluation &middot; arXiv:2604.10981 &rarr;
+              </span>
+              <span className="sm:hidden font-[family-name:var(--font-lato)] text-[0.72rem] text-[var(--kl-text-muted)]">
+                arXiv:2604.10981 &rarr;
               </span>
             </a>
           </motion.div>

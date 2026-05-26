@@ -30,14 +30,14 @@ export function Provenance() {
   return (
     <section
       id="provenance"
-      className="relative bg-[#F7F5F2] py-32 lg:py-40 overflow-hidden"
+      className="relative bg-[#F7F5F2] py-16 md:py-24 lg:py-40 overflow-hidden"
     >
       <SectionOverlay variant="left" />
       {/* Top accent */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#B39B5C]/60 to-transparent" />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-8 md:px-16 xl:px-24">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-10 md:gap-16 lg:gap-24">
           {/* LEFT: framing */}
           <div>
             <Reveal>
