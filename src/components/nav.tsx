@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -141,71 +141,50 @@ export function Nav() {
         </button>
       </div>
 
-      {/* Mobile menu overlay */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ y: "-100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-100%" }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden fixed inset-0 z-[200] bg-[var(--kl-canvas)]"
-          >
-            <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-8 pt-20">
-              {sectionLinks.map((link, i) => (
-                <motion.div
-                  key={link.label}
-                  initial={{ opacity: 0, y: -12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 + i * 0.04, duration: 0.3 }}
-                >
-                  <Link
-                    href={link.href}
-                    className={mobileNavTextClass}
-                    onClick={closeMenu}
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-
-              <span className="block w-12 h-[1px] bg-[color:color-mix(in_srgb,var(--kl-text)_12%,transparent)] my-1" />
-
-              {pageLinks.map((link, i) => (
-                <motion.div
-                  key={link.label}
-                  initial={{ opacity: 0, y: -12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.28 + i * 0.04, duration: 0.3 }}
-                >
-                  <Link
-                    href={link.href}
-                    className={mobileNavTextClass}
-                    onClick={closeMenu}
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-
-              <motion.div
-                initial={{ opacity: 0, y: -12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.38, duration: 0.3 }}
-                className="mt-2"
+      {/* Mobile menu overlay — static opaque backdrop + animated content.
+          Separated because iOS Safari breaks fixed+transform compositing. */}
+      {menuOpen && (
+        <div
+          className="md:hidden fixed inset-0 z-[200]"
+          style={{ backgroundColor: "#f7f5ef" }}
+        >
+          <div className="flex flex-col items-center justify-center min-h-screen gap-6 px-8 pt-20">
+            {sectionLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={mobileNavTextClass}
+                onClick={closeMenu}
               >
-                <Link
-                  href="/demo"
-                  className="inline-block text-[0.85rem] font-bold tracking-[0.12em] uppercase font-[family-name:var(--font-lato)] text-[var(--kl-canvas)] bg-[var(--kl-accent)] px-8 py-3.5 hover:opacity-90 transition-opacity duration-300"
-                  onClick={closeMenu}
-                >
-                  Demo
-                </Link>
-              </motion.div>
+                {link.label}
+              </Link>
+            ))}
+
+            <span className="block w-12 h-[1px] bg-[color:color-mix(in_srgb,var(--kl-text)_12%,transparent)] my-1" />
+
+            {pageLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={mobileNavTextClass}
+                onClick={closeMenu}
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            <div className="mt-2">
+              <Link
+                href="/demo"
+                className="inline-block text-[0.85rem] font-bold tracking-[0.12em] uppercase font-[family-name:var(--font-lato)] text-[var(--kl-canvas)] bg-[var(--kl-accent)] px-8 py-3.5 hover:opacity-90 transition-opacity duration-300"
+                onClick={closeMenu}
+              >
+                Demo
+              </Link>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
