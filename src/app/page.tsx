@@ -377,18 +377,15 @@ export default function Home() {
             <div>
               <SectionEyebrow>About</SectionEyebrow>
               <h2 className="font-[family-name:var(--font-fraunces)] text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.15] tracking-[-0.01em] font-semibold text-[var(--kl-text)]">
-                A research lab, not a product company.
+                Built from the ground up. Shipping as infrastructure.
               </h2>
             </div>
             <div className="space-y-6 font-[family-name:var(--font-source-serif)] text-[1.1rem] md:text-[1.15rem] leading-[1.7] text-[var(--kl-text-muted)]">
               <p>
-                <strong className="text-[var(--kl-text)]">Kenotic Labs is an AI infrastructure company building the continuity layer for AI.</strong> Infrastructure that preserves and reconstructs the living state of a situation across time. Founded in 2025 by <strong className="text-[var(--kl-text)]">Samuel Sameer Tanguturi</strong>. Based in Michigan, USA. Core architecture: DTCM (Decomposed Trace Convergence Memory). Validated by the ATANT evaluation framework (arXiv:2604.06710, arXiv:2604.10981). Thesis: arXiv:2604.17273.
+                <strong className="text-[var(--kl-text)]">Kenotic Labs is an AI infrastructure company building the continuity layer for AI.</strong> Infrastructure that preserves and reconstructs the living state of a situation across time. The core engine works today: deterministic extraction, cross-host memory via MCP, and a working demo that carries understanding across Claude, GPT, Cursor, and anything MCP-compatible. Founded in 2025 by <strong className="text-[var(--kl-text)]">Samuel Sameer Tanguturi</strong>. Based in Michigan, USA.
               </p>
               <p>
-                The name comes from <em className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)] not-italic font-medium">kenosis</em>, a Greek term for self-pouring without loss of self. The architecture and the name describe the same pattern: a structured state that moves forward into the next moment without losing what it was.
-              </p>
-              <p>
-                The work is in public. The framework is on arXiv. The benchmark is on GitHub. The corpus is on Hugging Face. The thesis is on arXiv and on this site.
+                Three arXiv papers, two patent applications, an open benchmark on GitHub, and a narrative corpus on Hugging Face. All published, all verifiable, all before raising a dollar.
               </p>
             </div>
           </div>
