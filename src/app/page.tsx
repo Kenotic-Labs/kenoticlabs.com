@@ -217,7 +217,7 @@ export default function Home() {
             <ArchCard title="Five structured traces" detail="Every utterance gets decomposed into five trace types: episodic, emotional, temporal, relational, and schematic. All stored as a single row." />
             <ArchCard title="Supersession" detail={<>&ldquo;I work at Netflix&rdquo; gets stored. &ldquo;I got a job at Google&rdquo; marks Netflix as historical, Google as current. No LLM deciding what to update.</>} />
             <ArchCard title="Cross-host via MCP" detail="Works with Claude, GPT, Gemini, Cursor, and everything MCP-compatible. One local server. Install once." />
-            <ArchCard title="Zero marginal cost" detail="spaCy + SQLite + grammar rules. No cloud. No GPU. No per-query cost. Runs on an 8GB machine." />
+            <ArchCard title="Zero marginal cost" detail="spaCy + SQLite + grammar rules. No cloud. No GPU. No per-query cost. Runs on any laptop." />
             <ArchCard title="The system that says &ldquo;I don&rsquo;t know&rdquo;" detail="Ask about something that was never stored. Every other system gives you a confident answer anyway. Kenotic abstains, because deterministic extraction knows what is and is not there." />
           </div>
         </div>

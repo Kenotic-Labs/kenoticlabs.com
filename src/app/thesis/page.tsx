@@ -460,7 +460,7 @@ export default function ThesisPage() {
             </p>
             <SubHeader>Layer 1 — External infrastructure</SubHeader>
             <p>
-              <strong className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)]">Layer 1. External infrastructure.</strong> This is the layer that exists today. Continuity sits underneath any model, callable as an SDK. The model reads from it and writes to it. The weights are unchanged. The same continuity state works whether the model on top is GPT, Claude, Llama, or something not yet released. The proof point is ATANT: an open benchmark, a published paper on arXiv (2604.06710), a reference implementation, and results that hold at 100% accuracy in isolated mode (250 stories, 1,835 of 1,835 questions), 100% in 50-story cumulative mode, and 96% at 250-story cumulative scale, with no language model in the evaluation loop. The reference implementation runs on an 8GB GPU. This is not a research promise. It is a layer that ships now.
+              <strong className="font-[family-name:var(--font-newsreader)] italic text-[var(--kl-accent)]">Layer 1. External infrastructure.</strong> This is the layer that exists today. Continuity sits underneath any model, callable as an SDK. The model reads from it and writes to it. The weights are unchanged. The same continuity state works whether the model on top is GPT, Claude, Llama, or something not yet released. The proof point is ATANT: an open benchmark, a published paper on arXiv (2604.06710), a reference implementation, and results that hold at 100% accuracy in isolated mode (250 stories, 1,835 of 1,835 questions), 100% in 50-story cumulative mode, and 96% at 250-story cumulative scale, with no language model in the evaluation loop. The reference implementation runs on any laptop with no GPU required. This is not a research promise. It is a layer that ships now.
             </p>
             <SubHeader>Layer 2 — Model integration</SubHeader>
             <p>
@@ -509,7 +509,7 @@ export default function ThesisPage() {
             </p>
             <SubHeader>Continuity is not compute-bound</SubHeader>
             <p>
-              The second part is that continuity, unlike scaling, is not compute-bound. The reference implementation of the continuity layer passes the ATANT benchmark on an 8GB GPU. The whole point of moving the work into the layer is that the layer is small, deterministic, and runs anywhere. While the model labs are spending billions on the next training run, the continuity layer ships now, on commodity hardware, and provides an order-of-magnitude improvement in usefulness without touching the weights.
+              The second part is that continuity, unlike scaling, is not compute-bound. The reference implementation of the continuity layer passes the ATANT benchmark on any laptop with no GPU. The whole point of moving the work into the layer is that the layer is small, deterministic, and runs anywhere. While the model labs are spending billions on the next training run, the continuity layer ships now, on commodity hardware, and provides an order-of-magnitude improvement in usefulness without touching the weights.
             </p>
             <p>
               That asymmetry is the entire opportunity. The closer the model layer gets to its physical limits, the more valuable a layer that does not depend on those limits becomes. Continuity is what you build when scaling stops being the answer. The physics wall is not a problem for this layer. It is the tailwind.
